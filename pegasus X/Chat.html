@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/chat.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/btn.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="./assets/img/PG.png" type="image/x-icon">
+
+<!-- ✝ ======= 🐉 ╟ Tarjeta ╢ 🐉 ======= ✝ -->
+
+<meta name="description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="canonical" href="https://pegasus-v2.netlify.app/" />
+<link rel="image_src" href="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" id="image_src" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="677288579025878" />
+<meta property="fb:pages" content="122006227838751" />
+<meta property="og:title" content="Pegasus X" />
+<meta name="keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+<meta name="news_keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+
+<meta property="og:url" content="https://pegasus-v2.netlify.app/" />
+<meta property="og:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" />
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Pegasus X" />
+<meta property="og:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+<meta property="og:locale" content="es_ES" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@NamazYunpio">
+<meta name="twitter:title" content="Pegasus X">
+<meta name="twitter:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+<meta name="twitter:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png">
+<meta name="robots" content="index, follow" />
+<meta name='googlebot' content='index, follow' />
+
+<!-- ✝ ======= 🐉 ╟ Dublin Core ╢ 🐉 ======= ✝ -->
+
+<meta name="DC.title" content="Pegasus X" />
+<meta name="dc.creator" content="PEGASUS X">
+<meta name="dc.date" content="2023-08-21">
+<meta name="DC.identifier" content="https://pegasus-v2.netlify.app/" />
+<meta name="DC.description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+<meta name="dc.subject" content=" Pegasus X, pegasus x">
+<meta name="dc.format" content="text/html">
+<meta name="DC.language" content="es" />
+
+<meta name=”GOOGLEBOT” content=”NOODP” />
+<meta name=”Slurp” content=”NOODP” />
+<meta name=”msnbot” content=”NOODP” />
+
+<!-- ✝ ======= 🐉 ╟ favicon diferentes dispositivos + pwa ╢ 🐉 ======= ✝ -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pegasus X">
+<meta name="theme-color" content="#b10a0a">
+
+<!-- ✝ ======= 🐉 ╟ Tarjeta fin ╢ 🐉 ======= ✝ -->
+
+
+<style>
+/* Estilos para el cuadro de mensaje */
+.message-container {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+/* Estilo para la imagen del usuario */
+.user-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Estilo para la imagen del bot */
+.bot-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+/* Estilos para el cuadro de mensaje del usuario y el bot */
+.user-message-box, .bot-message-box {
+    display: flex;
+    align-items: flex-start;
+}
+
+/* Estilos para los mensajes del usuario y el bot */
+.message-box {
+    max-width: 70%;
+    word-wrap: break-word;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Estilo para el mensaje del usuario */
+.user-message {
+    background-color: #646464;
+    order: 2;
+}
+
+/* Estilo para el mensaje del bot (en el lado derecho) */
+.bot-message {
+    background-color: #252525;
+    order: 3; /* Cambia el orden para que el mensaje del bot esté a la derecha */
+}
+
+</style>
+
+</head>
+<body>
+  <div id="overlay">
+    <div id="loader">
+      <div class="loader-circle"></div>
+    </div>
+    <div id="loading-text">Cargando...</div>
+ </div>
+
+    
+    <div class="chat-container">
+        <div class="titulo"><h1>ChatBot Pgx</h1> </div>
+      <h1 id="texto-generado"></h1>
+
+        <div class="faq-list" id="faq-list">
+            <span class="faq-item" id="btn-greem" >Iniciar</span>
+            <br>            
+
+        </div>
+
+        <br>
+
+        <div class="chat-output" id="chat-output">
+                <!-- Agregar sección de preguntas frecuentes -->
+                
+        </div>
+        <div class="user-input-container">
+            <input type="text" id="user-input" placeholder="Escribe Star...">
+            <br><br>
+            <button id="send-button">Enviar</button>
+            <div class="extra">
+              <button id="clear-button"><i class='bx bx-trash'></i></button>
+              <br>
+              <br>
+              <button id="scrollButton"><i class='bx bxs-chevron-down'></i></button>
+            </div>
+            <br><br>
+        </div>
+    </div>
+    <h1 id="texto-generado"></h1>
+
+    <img src="" id="img-user" alt="">
+    <p class="Modelo-user" id="Modelo-user"></p>
+<script>
+  const container = document.getElementById('chat-output');
+  const scrollButton = document.getElementById('scrollButton');
+  const innerContent = document.getElementById('chat-output');
+
+  // Mostrar u ocultar el botón según la posición del scroll
+  container.addEventListener('scroll', () => {
+    if (innerContent.clientHeight + container.scrollTop < innerContent.scrollHeight - 10) {
+      scrollButton.style.display = 'block';
+    } else {
+      scrollButton.style.display = '';
+    }
+  });
+
+  // Hacer scroll suavemente al final del contenido del div
+  scrollButton.addEventListener('click', () => {
+    innerContent.scrollTo({ top: innerContent.scrollHeight, behavior: 'smooth' });
+  });
+</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <!--   <script src="https://cdn.jsdelivr.net/npm/string-similarity/umd/string-similarity.min.js"></script>-->
+    <script src="./reconocedor.js"></script>
+    <script>
+      var usuariosContrasenas = {
+        "Florentino": { password: "admin", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/fa/7c/2c/fa7c2c6165b5d219a8353a660f31b2f3.jpg" },
+        "admin": { password: "admin", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" },
+        "aa": { password: "aa", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/d5/81/45/d58145ed8fded7ebed053677baeef49c.jpg" },
+        "Arquitecto Sandro": { password: "admin", mensaje: "Pago: te faltan 2 días", modelo: "Basico", imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" },
+        "Usuario2": { password: "admin", modelo: "💎 Premiun 💎", imagen: "./1.jpg" }
+    };
+    
+    $(document).ready(function () {
+        var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+        var today = new Date().toLocaleDateString();
+    
+        if (lastSecurityCheckDate === today) {
+            showWelcomeMessage();
+        } else {
+            performSecurityCheck();
+        }
+    });
+    
+    function showWelcomeMessage() {
+        var username = localStorage.getItem('username');
+    
+        if (username) {
+          $(".user").text(username);
+            var saludo = "Hola, " + username + " Bienvenid@!";
+            document.getElementById("texto-generado").textContent = saludo;
+    
+            var TipoModelos = localStorage.getItem('TipoModelo');
+    
+            if (TipoModelos) {
+                var TipoModelo = document.getElementById("Modelo-user");
+                TipoModelo.textContent = TipoModelos;
+                
+                //if (TipoModelos === "💎 Premiun 💎") {
+                //    var passwordElement = document.getElementById("password");
+                //    passwordElement.style.display = "none";
+               // }
+            }
+    
+            var imagenUsuarioURL = localStorage.getItem('imagenUsuario');
+    
+            if (imagenUsuarioURL) {
+                var imagenUsuario = document.getElementById("img-user");
+                imagenUsuario.src = imagenUsuarioURL;
+                imagenUsuario.alt = "Imagen de Usuario";
+            }
+        } else {
+            performSecurityCheck();
+        }
+        hideLoader();
+    }
+      
+      function performSecurityCheck() {
+          var maxAttempts = 3;
+          var attempts = 0;
+          var isAvisoMostrado = false;
+          var controluno = false;
+          var controldos = false;
+      
+          function showLoader() {
+              $("#overlay").fadeIn();
+          }
+      
+          function hideLoader() {
+              $("#overlay").fadeOut();
+          }
+      
+          function guardarDatos(nombre) {
+            //var fechaHora = obtenerFechaHora();
+            //var url = "https://script.google.com/macros/s/AKfycby1aVTFUQOvTLePapUGtgR-nZ49jo_Z3NDJBQpbIFM_o0ucMMBzOlVXwcqHjqD--N27/exec";
+            //var data = {
+            //    nombre: nombre
+            //};
+      
+            //$.post(url, JSON.stringify(data), function (response) {
+            //    alert(response);
+            //});
+      
+              var lastReloadDate = localStorage.getItem('lastReloadDate');
+              var today = new Date().toLocaleDateString();
+      
+              if (lastReloadDate !== today) {
+                  setTimeout(function () {
+                      localStorage.setItem('lastReloadDate', today);
+                      window.location.reload();
+                  }, 5000);
+              }
+          }
+      
+          function obtenerFechaHora() {
+              var now = new Date();
+              var fecha = now.toLocaleDateString();
+              var hora = now.toLocaleTimeString();
+              return fecha + " " + hora;
+          }
+      
+          function checkNombre() {
+              if (attempts < maxAttempts) {
+                  if (!isAvisoMostrado) {
+                      alert("😋 ¡Hola! Es hora de acceder. 😋\n🤭 Si no tienes tus claves, accede a este\n🔗 link: 'pegasus-v2.tk/registro' 🔗 para obtener tu acceso. 😏\n\n☠️ ¡No te equivoques! ☠️");
+                      isAvisoMostrado = true;
+                  }
+      
+                  if (!controluno) {
+                      alert("Control De Seguridad 1");
+                      controluno = true;
+                  }
+      
+                  var username = prompt("Ingrese el nombre de seguridad");
+      
+                  if (usuariosContrasenas.hasOwnProperty(username)) {
+                      checkCodigo(username);
+                  } else {
+                      attempts++;
+                      alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                      checkNombre();
+                  }
+              } else {
+                  showLoader();
+                  setTimeout(hideLoader, 5000);
+                  window.location.href = "404.html";
+              }
+          }
+      
+          function checkCodigo(username) {
+            if (attempts < maxAttempts) {
+                if (!controldos) {
+                    alert("Control De Seguridad 2");
+                    controldos = true;
+                }
+        
+                var codigo = prompt("Ingrese la contraseña");
+        
+                if (usuariosContrasenas[username].password === codigo) {
+                    showLoader();
+                    setTimeout(function () {
+                        hideLoader();
+                        var saludo = "Hola, " + username + " Bienvenid@!";
+                        textoGenerado.textContent = saludo;
+      
+                        var TipoModelos = usuariosContrasenas[username].modelo;
+                        var TipoModelo = document.getElementById("Modelo-user");
+                        TipoModelo.textContent = TipoModelos;
+                        localStorage.setItem('TipoModelo', TipoModelos);
+      
+                        // Agregar imagen de usuario aquí
+                        var imagenUsuarioURL = usuariosContrasenas[username].imagen;
+                        var imagenUsuario = document.getElementById("img-user");
+                        imagenUsuario.src = imagenUsuarioURL;
+                        imagenUsuario.alt = "Imagen de Usuario";
+                        // document.getElementById("texto-generado").appendChild(imagenUsuario);
+      
+                        // Almacenar la URL de la imagen en el almacenamiento local
+                        localStorage.setItem('imagenUsuario', imagenUsuarioURL);
+        
+                        if (username === 'admin') {
+                            // Mostrar una alerta específica para el usuario 'admin'
+                            alert("¡Acceso de administrador!");
+                        } else {
+                            alert(" ✅ Acceso concedido ✅ ");
+                        }
+                        if (usuariosContrasenas[username].mensaje) {
+                          alert(usuariosContrasenas[username].mensaje);
+                      }
+      
+                        guardarDatos(username, imagenUsuarioURL, TipoModelos);
+        
+                        var today = new Date().toLocaleDateString();
+                        localStorage.setItem('lastSecurityCheckDate', today);
+        
+                        localStorage.setItem('username', username);
+                    }, 5000);
+                } else {
+                    attempts++;
+                    alert("Contraseña incorrecta. Intento " + attempts + " de " + maxAttempts);
+                    checkCodigo(username);
+                }
+            } else {
+                showLoader();
+                setTimeout(hideLoader, 5000);
+                window.location.href = "404.html";
+            }
+        }
+      
+          showLoader();
+          checkNombre();
+      }
+      
+      function showLoader() {
+          var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+          var today = new Date().toLocaleDateString();
+      
+          if (lastSecurityCheckDate !== today) {
+              $("#overlay").fadeIn();
+          }
+      }
+      
+      function hideLoader() {
+          $("#overlay").fadeOut();
+      }
+      
+      </script>
+    <script>
+      
+        var textoGenerado = document.getElementById("texto-generado");
+
+        var audio = new Audio('presentacion.wav');
+
+
+        
+  function presentacion() {
+  const lector = document.getElementById('lector');
+    //var audio = new Audio('presentacion.wav');
+    audio.play();
+    lector.innerHTML = '<span class="lector" id="lector" onclick="presentacion()">⏹️</span>';
+            setTimeout(function() { 
+            lector.innerHTML = '<span class="lector" id="lector" onclick="presentacion()">▶️</span>';
+                 
+        }, 18000);
+  }  
+        const intents = {
+            "intents": [
+            {
+                "tag": "star",
+                "patterns": ["star"],
+                "responses": [
+                    {
+                        "text": '<div class="presentacion"><h1>😋 Pegasus X 😋</h1><p><span class="lector" id="lector" onclick="presentacion()">▶️</span> <span style="background-color: #000; "> Holiiii {user} te doy la bienvenida a Pegasus X somos un empresa sin fines de lucro, nuestro objetivo es fortalecer tu aprendizaje academico para lograr un mayor aprendizaje y obtener un buen rendimiento en tu persona: </span> <br><br>Información:<br><br>  <a href="">⚠️ Límites ⚠️</a> <br><br> <a href="">🗂️ Comandos Existentes 🗂️</a> </span> <br><br> Links:<br><br> <span style="background-color: #000;">  <a href="">📑Compartir Material 📑</a> <br><br> <a href="">📼 Ver Videos 📼</a> <br><br> <a href="">📚 Libros 📚</a> </span> <br><br>🧾Reglas De Uso🧾: <br><br><span style="background-color: #000;"> 1.- 🔐No compartir con nadie con tus claves de seguridad ☠️ no queremos quitarle su acceso 🎫 <br><br> 2.- 📝 Compartir material para mejorar la enseñanza</span> <br><br> ⌨️ Reglas Del <a href="#">ChatBot</a> ⌨️:<br><br><span style="background-color: #000; "> esta es la estructura N#1 de mensajes: <br><br> <span style="color: #fff;" >{area}, {tema} + teoria <br><br>ejemplo: <br><br>geometría, segmentos teoria</span> <br><br>esta es la estructura N#2 de mensajes: <br><br> <span style="color: #fff; " >{area}, {tema}, {banco de preguntas (N#)}</span> <br><br>respuesta: <br><br><span style="color: #fff;" >{area}, {tema}, {banco de preguntas (N#)} + respuestas</span> </span> <br><br>🥺 Apoyamos 🥺:<br><br><span style="background-color: #000; "><a href="">📂 Facebook</a><br><a href="">📂 WhatsApp</a><br><a href="">📂 YouTube</a><br><a href="">📂 Tiktok</a></span><br><br>💻 Creadores 💻: <br><br><span style="background-color: #000; "> 🤐 Pgx<br> 😐 Rb </span> </p></div>',
+                        "attachment": '<br>'
+                    }
+                ]
+            },
+            {
+                    "tag": "saludo",
+                    "patterns": ["hola", "qué tal", "cómo estás", "saludos"],
+                    "responses": [
+                        {
+                            "text": 'Holi ' + localStorage.getItem('username') + ' :3' ,
+                            "attachment": '<br><br><img class="img-saludo" src="holi.jpeg" alt="">'
+                        }
+                    ]
+                },
+                {
+                    "tag": "índice",
+                    "patterns": ["índice"],
+                    "responses": [
+                        {
+                            "text": '<p>aquí tienes el índice:</p><h3>Índice</h3><p><span class="lector" id="lector" onclick="presentacion()">▶️</span>Contamos con los siguientes temas:<br><br><span style="background-color: #000;"> 1.- 📚Geometría:<br>📕Segmentos<br><br> 2.- 📚 Álgebra</span></p>',
+                            "attachment": null
+                        }
+                    ]
+                },
+                {
+                    "tag": "GMT",
+                    "patterns": ["{geometría}, {segmentos} teoria", "geometría, segmentos teoria"],
+                    "responses": [
+                    {
+                        "text": "segmentos teoría:",
+                        "attachment":'<br><br><img class="img" src="https://raw.githubusercontent.com/pegasus1v1/fotos/main/geo1.jpg" alt=""><br><br> <div class="contenedor-btns"> <a class="btn-download" href="" download >Descargar</a></div>'
+                    }
+                ]
+                },
+                {
+                    "tag": "res",
+                    "patterns": ["cántame"],
+                    "responses": [
+                    {
+                        "text": "jsjsjsj 🤭",
+                        "attachment": '<br><br><video id="video" class="video-js" controls preload="auto" poster="./assets/img/pegasus.jpg" data-setup="{}"><source src="https://github.com/1RubiUwU1/ChatPgx/raw/main/canto.mp4" type="video/mp4" />    </video><br><br><div class="contenedor-btns"> <a class="btn-download" href="" download >Descargar</a></div>'
+                    }
+                ]
+                },{
+                    "tag": "que",
+                    "patterns": ["que"],
+                    "responses": [
+                    {
+                        "text": "so",
+                        "attachment": null
+                    }
+                ]
+                }
+                // Puedes agregar más intenciones aquí
+            ]
+        };
+
+
+        const chatOutput = document.getElementById('chat-output');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const clearButton = document.getElementById('clear-button');
+        const faqList = document.getElementById('faq-list');
+        // Historial del chat (se inicializa con los mensajes guardados en el LocalStorage)
+        let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+        let isSendingMessage = false;
+
+        // Función para mostrar el historial del chat
+        function displayChatHistory() {
+            for (const message of chatHistory) {
+                outputMessage(message.text, message.sender, message.attachment);
+            }
+        }
+
+        // Función para guardar un mensaje en el historial del chat
+        function saveMessageToChatHistory(message, sender, attachment) {
+            chatHistory.push({ text: message, sender: sender, attachment: attachment });
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        }
+
+        // Función para limpiar el historial del chat
+        function clearChatHistory() {
+            chatOutput.innerHTML = '';
+            chatHistory = [];
+            localStorage.removeItem('chatHistory');
+        }
+
+        // Función para enviar una pregunta al chat cuando se hace clic en ella
+        function sendQuestionToChat(question) {
+            outputMessage(question, 'user');
+            isSendingMessage = true;
+
+            const botResponse = getBotResponse(question);
+            setTimeout(function() {
+                outputMessage(botResponse.text, 'bot', botResponse.attachment);
+                saveMessageToChatHistory(botResponse.text, 'bot', botResponse.attachment);
+                isSendingMessage = false;
+            }, 1000);
+        }
+
+        // Evento clic en una pregunta frecuente para enviarla al chat
+let showFaq = true; // Variable para alternar entre preguntas frecuentes y acciones anteriores
+
+faqList.addEventListener('click', function(event) {
+
+    if (showFaq) {
+        // Mostrar preguntas frecuentes
+        faqList.style.display = "";
+        setTimeout(function() { 
+            faqList.style.display = "block";
+            faqList.innerHTML = '<span id="btn-greem" >Estoy activa UwU</span>';
+            faqList.classList.remove("faq-item");        
+        }, 1000);
+    } else {
+        alert("🤬🤬🤬")
+        faqList.innerHTML = '<span id="btn-greem" >No quieras probar mi paciencia</span>';
+                       // Crear el elemento img
+                    const imgElement = document.createElement('img');
+                    imgElement.classList.add("enojo");
+                    imgElement.src = './angry.jpeg'; // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de tu imagen
+                    imgElement.alt = 'Descripción de la imagen'; // Reemplaza 'Descripción de la imagen' con la descripción adecuada
+                    // Crear un elemento <br> para agregar un salto de línea antes de la imagen
+                    const brElement = document.createElement('br');
+                    const br = document.createElement('br');
+                    // Agregar el elemento <br> y la imagen al botón
+                    faqList.appendChild(brElement);
+                    faqList.appendChild(br);
+                    faqList.appendChild(imgElement);     
+        faqList.classList.remove("faq-item");
+ setTimeout(function() { 
+imgElement.style.display = "none";
+                   
+        }, 5000);
+
+                   
+
+        return;
+    }
+
+    // Alternar el valor de la variable showFaq
+    showFaq = !showFaq;
+            if (!isSendingMessage && event.target.classList.contains('faq-item')) {
+                const question = event.target.textContent;
+                //sendQuestionToChat(question);
+                sendQuestionToChat("star");
+                // Guardar la pregunta frecuente en el historial del chat
+                saveMessageToChatHistory(question, 'user', null);
+            }
+        });
+
+// Función para mostrar mensajes en el chat, incluyendo imágenes dentro del cuadro de mensaje
+function outputMessage(message, sender, attachment) {
+  const messageContainer = document.createElement('div');
+  messageContainer.className = sender === 'bot' ? 'message-container bot-message' : 'message-container user-message';
+  chatOutput.appendChild(messageContainer);
+
+  if (sender === 'user') {
+      const userMessageBox = document.createElement('div');
+      userMessageBox.className = 'user-message-box';
+      messageContainer.appendChild(userMessageBox);
+
+      // Imagen del usuario
+      const userImage = document.createElement('img');
+      userImage.src = localStorage.getItem('imagenUsuario'); // Ruta de la imagen del usuario
+      userImage.alt = 'Imagen del Usuario';
+      userImage.classList.add('user-image');
+      userMessageBox.appendChild(userImage);
+  }
+
+  if (sender === 'bot') {
+      const botMessageBox = document.createElement('div');
+      botMessageBox.className = 'bot-message-box';
+      messageContainer.appendChild(botMessageBox);
+
+      // Imagen del bot
+      const botImage = document.createElement('img');
+      botImage.src = 'imagen_bot.jpg'; // Ruta de la imagen del bot
+      botImage.alt = 'Imagen del Bot';
+      botImage.classList.add('bot-image');
+      botMessageBox.appendChild(botImage);
+  }
+
+  const messageBox = document.createElement('div');
+  messageBox.className = 'message-box';
+  if (!attachment) {
+      const chatBubble = document.createElement('div');
+      chatBubble.className = sender === 'bot' ? 'bot-message' : 'user-message';
+      chatBubble.innerHTML = message;
+      messageBox.appendChild(chatBubble);
+  } else {
+      messageBox.innerHTML = message;
+  }
+  messageContainer.appendChild(messageBox);
+}
+
+// Función para enviar una pregunta al chat con imágenes correspondientes dentro del cuadro de mensaje
+function sendQuestionToChat(question) {
+  outputMessage(question, 'user');
+  isSendingMessage = true;
+
+  const botResponse = getBotResponse(question);
+  setTimeout(function() {
+      outputMessage(botResponse.text, 'bot', botResponse.attachment);
+      saveMessageToChatHistory(botResponse.text, 'bot', botResponse.attachment);
+      isSendingMessage = false;
+  }, 1000);
+}
+
+        // Función para obtener la respuesta del bot
+        function getBotResponse(userInputText) {
+            const threshold = 0.5; // Umbral de similitud mínimo para considerar una coincidencia
+            let bestMatch = {
+                similarity: 0,
+                response: {
+                    text: "¡Disculpa 😭 que no pueda absolver algunas de tus dudas!",
+                    attachment: '<br><br><img class="img-error" src="./error.png" alt="">'
+                }
+            };
+
+            const userNormalized = normalizeText(userInputText);
+
+
+            for (const intent of intents.intents) {
+                for (const pattern of intent.patterns) {
+                    const patternNormalized = normalizeText(pattern);
+                    const similarity = stringSimilarity.compareTwoStrings(userNormalized, patternNormalized);
+                    if (similarity > threshold && similarity > bestMatch.similarity) {
+                        bestMatch.similarity = similarity;
+                        const responses = intent.responses;
+                        bestMatch.response = responses[Math.floor(Math.random() * responses.length)];
+                    }
+                }
+            }
+
+            return bestMatch.response;
+        }
+
+        // Función para normalizar el texto
+        function normalizeText(text) {
+            return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+
+        // Evento clic en el botón "Enviar"
+        sendButton.addEventListener('click', function() {
+            const userMessage = userInput.value;
+            if (!isSendingMessage && userMessage.trim() !== '') {
+                outputMessage(userMessage, 'user');
+                saveMessageToChatHistory(userMessage, 'user', null);
+
+                const botResponse = getBotResponse(userMessage);
+                setTimeout(function() {
+                    outputMessage(botResponse.text, 'bot', botResponse.attachment);
+                    saveMessageToChatHistory(botResponse.text, 'bot', botResponse.attachment);
+                    isSendingMessage = false;
+                }, 0);
+
+                userInput.value = '';
+            }
+        });
+
+        userInput.addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+        
+        // Evento clic en el botón "Limpiar"
+        clearButton.addEventListener('click', function() {
+            clearChatHistory();
+        });
+
+        // Mostrar el historial del chat al cargar la página
+        displayChatHistory();
+    </script>
+</body>
+</html>

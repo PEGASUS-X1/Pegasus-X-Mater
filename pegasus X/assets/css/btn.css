@@ -1,0 +1,108 @@
+a{
+  text-decoration: none;
+}
+.btn{
+    text-decoration: none;
+    padding: 10px 30px 10px 30px;
+    /* width: 100%; */
+    position: static;
+}
+
+/* cariedades de colores y lineas */
+.gray{
+    border-radius: 1000px;
+    border: 1px solid #fff;
+    color: #ffffff; 
+}
+.blue {
+    border-radius: 1000px;
+    width: 100%;
+    border: 1px solid #000000;
+    background: #b80000;
+    color: #ffffff;
+}
+.btn-contenedor{
+    width: 100%;
+}
+.red{
+    border-radius: 1000px;
+    position: static;
+    border: 1px solid #000000;
+    background: #ff0000;
+    color: #ffffff;
+}
+.btn-red{
+  cursor: pointer;
+    width: 100%;
+    padding: 10px 30px 10px 30px;
+    border-radius: 1000px;
+    position: static;
+    /* margin-top: 50px; */
+    border: 1px solid #000000;
+    background: #ff0000;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+#download-btn{
+  width: 100%;
+  padding: 10px 30px 10px 30px;
+  border-radius: 1000px;
+  position: static;
+  /* margin-top: 50px; */
+  border: 1px solid #000000;
+  background: #ff0000;
+  color: #ffffff;
+}
+
+.sistema-de-filtrado{
+  margin-top: 20px;
+  padding: 10px;
+  /* margin-left: 20px; */
+  justify-items: center;
+  justify-self: center;
+  text-align: center;
+  justify-content: center;
+  display: flex;
+  margin-bottom: 20px;
+  }
+  
+  .filtro {
+    margin-right: 50px;
+  }
+  select {
+    text-align: center;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background-color: #fff;
+    width: 150px;
+  }
+  
+  select:focus {
+    outline: none;
+    border-color: #860000;
+  }
+  option {
+    padding: 8px;
+    font-size: 14px;
+    background-color: #fff;
+    color: #000;
+  } 
+  .container-btn {
+    display: block;
+
+  }
+  /* Media query para ajustar el diseño en celulares */
+@media (max-width: 480px) {
+    .sistema-de-filtrado {
+      flex-direction: column;
+       /* Cambiamos la dirección de los filtros a columna en celulares */
+    }
+    .filtro{
+        margin-right: 0px;
+    }
+    select {
+      width: 100%; /* Hacemos que los select ocupen el 100% del ancho disponible en celulares */
+    }
+  }

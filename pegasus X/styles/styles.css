@@ -1,0 +1,107 @@
+body {
+	font-family: 'Times New Roman', sans-serif;
+	margin: 0;
+}
+	
+.controls {
+	display: flex;
+	flex-direction: row;
+	
+	gap: 7px;
+	padding: 7px;
+
+	float: left;
+}
+
+.links {	
+	-webkit-user-select: none;
+	user-select: none;
+	
+	opacity: 0.85;
+}
+
+.speaker {
+	-webkit-user-select: none;
+	user-select: none;
+}
+
+.speaker:hover {
+	-webkit-transform: scale(1.05);
+	transform: scale(1.05);
+}
+
+.link:hover {
+	font-weight: bold;
+}
+
+.idiot {
+	position: absolute;
+	
+	width: 100%;
+	height: 100%;
+	
+	z-index: -69;
+	
+	display: flex;
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+}
+
+/* Could have used a background image, but I chose not to for better performance. */
+.idiot > svg {
+	position: fixed;
+	
+	top: 50%;
+	left: 50%;
+	
+	width: 100%;
+	height: 100%;
+
+	-webkit-user-select: none;
+	user-select: none;
+
+	-webkit-transform: translate(-50%, -50%);
+	transform: translate(-50%, -50%);
+}
+
+.contact {
+	position: absolute;
+	
+	bottom: 0;
+	right: 0;
+	
+	padding: 7px;
+	opacity: 0.25;
+	
+	text-align: right;
+	
+	-webkit-user-select: none;
+	user-select: none;
+	
+	-webkit-transition: 0.3s ease;
+	transition: 0.3s ease;
+}
+
+.contact:hover {
+	opacity: 0.85;
+}
+
+/* Helper classes. */
+.small {
+	font-size: 10px;
+	line-height: 0;
+}
+
+.shadowy {
+	text-shadow: 1px 1px 2px white;
+}
+
+.clicky {
+	cursor: pointer;
+}	
+
+.hidden {
+	display: none;
+}

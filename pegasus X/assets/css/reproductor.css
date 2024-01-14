@@ -1,0 +1,154 @@
+body{ 
+    padding: 0;
+    margin: 0;
+    /* margin: 30px; */
+}
+
+.info{
+    border: 1px solid #000;
+}
+.profesor-clases {
+    border: 1px solid #000;
+}
+
+.iformacion-clase {
+    border: 1px solid #000;
+}
+
+.reproductor-clases{
+    padding: 10px;
+    /* border: 1px solid #000; */
+}
+.info {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.profesor-clases {
+    text-align: center;
+  float: right;
+  width: calc(50% - 10px); 
+  padding: 10px;
+  box-sizing: border-box;
+}
+.profesor-img{
+    width: 60%;
+    height: 400px;
+}
+.iformacion-clase {
+    position: relative;
+    text-align: center;
+  float: left;
+  width: calc(50% - 10px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.fecha-clase{
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #0011ff;
+    padding: 5px 15px 5px 15px;
+}
+.fechas-x {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #0011ff;
+    padding: 5px 15px;
+    color: #fff;
+    /* font-size: 12px; */
+}
+.chat{
+    padding: 30px;
+}
+.filtro-shar{
+    display: none;
+}
+.search-container {
+    width: 50%;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.search-container:hover .fa-search {
+    transform: rotate(45deg);
+    border: 2px solid #7e0000;
+    color: #7e0000;
+  }
+.search-container:hover{
+    border: 2px solid #7e0000;
+}
+#searchInput:hover{
+    color: #7e0000;
+}
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+  }
+
+  .fa-search {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #999;
+  }
+iframe{
+    max-width: 100%;
+    width: 100%;
+    height: 650px;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 600px) {
+    .info {
+      flex-direction: column; 
+    }
+  
+    .profesor-clases, .iformacion-clase {
+      float: none;
+      width: 100%; 
+      margin: 0; 
+      padding: 5px;
+    }
+
+    .chat{
+        padding: 10px;
+    }
+
+    .reproductor-clases{
+        padding: 1px;
+    }
+
+/*    iframe{
+        max-width: 100%;
+        width: 100%;
+        height: 300px;
+        box-sizing: border-box;
+    }  */
+    iframe{
+        max-width: 100%;
+        width: 100%;
+        height: 200px;
+        box-sizing: border-box;
+    }
+    .profesor-img{
+        width: 80%;
+        height: 350px;
+    }
+    .search-container {
+    width: 90%;
+}
+}
+
+::-webkit-scrollbar{
+    width: 0px;
+}

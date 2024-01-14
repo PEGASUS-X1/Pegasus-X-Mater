@@ -1,0 +1,110 @@
+*{
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 100%;
+    padding: 0;
+    margin: 0;
+}
+body{
+    background: url(./fondo-abstracto-codigo-binario_1048-6821.jpg) center;
+    background-size: cover;
+}
+select, input{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 1;
+}
+img{
+    max-width: 100%;
+}
+button{
+    text-decoration: none;
+    border: none;
+}
+.tab {
+    display: none;
+}
+.tab-button {
+    cursor: pointer;
+    font-size: 17px;
+    background: #000;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #fff;
+}
+
+.active {
+    background: #00218f;
+    color: white;
+    border: 1px solid #00ffdd;
+}
+.container::-webkit-scrollbar{
+    width: 7px;
+    background: #000;
+    border-radius: 15px;
+}
+.container::-webkit-scrollbar-thumb{
+    background: #fff;
+    border-radius: 15px;
+}
+.container{
+    border-radius: 5px;
+    padding: 10px;
+    box-sizing: border-box;  
+    max-width: 100%;
+    overflow: auto;
+    text-align: center;
+    justify-content: center;
+    width: 450px;
+    height: 500px;
+    border: 1px solid #ffffff;
+    color: #fff;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: #00000085;
+}
+@media screen and (max-width: 468px) {
+    .container{
+        width: 90%;
+    }
+}
+.btn-canbio{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.container .titulo{
+    text-shadow: 3px 0px 0px #00a2ff ;
+    font-size: 30px;
+    font-weight: 1;
+    margin-bottom: 30px;
+}
+.container i{
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.container input{
+    width: 90%;
+    height: 25px;
+    margin: 0 auto;   
+    margin-top: 10px;
+    margin-bottom: 10px; 
+}
+.container .sub{
+    margin: 0 auto;
+}
+.container button{
+    margin-top: 10px;
+    padding: 5px 30px;
+    margin-bottom: 30px;
+}
+.container .previsualizacion{
+    margin: 0 auto;
+    width: 300px;
+    height: 300px;
+    display: none;
+}
+
+.container button:hover{
+    background: #00ffdd;
+}

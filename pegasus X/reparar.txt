@@ -1,0 +1,132 @@
+<div class="modal" id="cursos">
+<div class="modal-content">
+  <span class="close close-modal-cursos">&times;</span>
+  <center>  
+  <section class="sistema-de-filtrado">  
+
+  <div class="filtro">
+    <label for="filtro-grupo">Grupo:</label>
+      <br>
+    <select id="filtro-grupo">
+      <option value="todos">Todos</option>
+      <option value="A">Grupo A</option>
+      <option value="B">Grupo B</option>
+    </select>
+  </div>
+
+  <div class="filtro">
+    <label for="filtro-materia">Materia:</label>
+    <br>
+    <select id="filtro-materia">
+      <option value="todos">Todos</option>
+      <option value="Fisica">Fisica</option>
+      <option value="Geometria">Geometria</option>
+      <option value="Algebra">Algebra</option>
+      <option value="Trigonometria">Trigonometria</option>
+      <option value="Aritmetica">Aritmetica</option>
+      <option value="Biologia">Biologia</option>
+    </select>
+  </div>
+  
+  <div class="filtro">
+    <label for="filtro-mes">Mes:</label>
+    <br>
+    <select id="filtro-mes">
+      <option value="todos">Todos</option>
+      <option value="enero">Enero</option>
+      <option value="febrero">Febrero</option>
+      <option value="marzo">Marzo</option>
+    </select>
+  </div>
+  
+
+</section>
+</center>
+  <div id="cursos-container"></div>
+
+</div>
+</div>
+<div class="modal" id="fotos">
+  <div class="modal-content">
+    <span class="close close-modal-fotos">&times;</span>
+    <center>  
+      <section class="sistema-de-filtrado">  
+    
+      <div class="filtro">
+        <label for="filtro-fotos-grupo">Grupo:</label>
+          <br>
+        <select id="filtro-fotos-grupo">
+          <option value="todos">Todos</option>
+          <option value="A">Grupo A</option>
+          <option value="B">Grupo B</option>
+        </select>
+      </div>
+    
+      <div class="filtro">
+        <label for="filtro-fotos-materia">Materia:</label>
+        <br>
+        <select id="filtro-fotos-materia">
+          <option value="todos">Todos</option>
+          <option value="Fisica">Fisica</option>
+          <option value="Geometria">Geometria</option>
+          <option value="Algebra">Algebra</option>
+          <option value="Trigonometria">Trigonometria</option>
+          <option value="Aritmetica">Aritmetica</option>
+          <option value="Biologia">Biologia</option>
+        </select>
+      </div>
+      
+      <div class="filtro">
+        <label for="filtro-fotos-mes">Mes:</label>
+        <br>
+        <select id="filtro-fotos-mes">
+          <option value="todos">Todos</option>
+          <option value="enero">Enero</option>
+          <option value="febrero">Febrero</option>
+          <option value="marzo">Marzo</option>
+        </select>
+      </div>
+      
+    
+    </section>
+    </center>
+      <div id="fotos-container"></div>
+    
+  </div>
+  </div>
+    <div id="modal-fotos" class="modal-IMG">
+    <div class="modal-content-IMG">
+    <span class="close-IMG" onclick="cerrarimgmodal()">&times;</span>
+    <img id="modal-image" src="" alt="Imagen">
+    <br>
+    <br>
+    <a id="download-btn" class="btn-download" href="#" download>Descargar</a>
+  </div>
+  </div>
+<!-- <div class="modal" id="Libros">
+<div class="modal-content">
+  <span class="close close-modal-Libros">&times;</span>
+  <div class="contenedor-libros">
+    <div class="libros">
+        <img src="ruta_imagen1.jpg" alt="Imagen de la carta 1" width="300" height="200">
+        <div class="conteido-libros">
+          <h2 class="nombre-profesores">KALA</h2>
+          <br>
+          <br>
+          <h3>Redes Sociales:</h3>
+          <br>
+
+          <div class="social-box">
+            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
+          </div>
+
+        </div>
+        <div class="botones-libros">
+            <a href="" class="btn-libros">Chat</a>
+        </div>
+    </div>
+</div>
+</div>
+</div>  -->

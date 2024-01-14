@@ -1,0 +1,67 @@
+/* Media queries para hacer las cartas responsivas */
+@media screen and (max-width: 900px) {
+    .carta {
+      width: calc(33.3% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 850px) {
+    .carta {
+      width: calc(33.3% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 768px) {
+    .carta {
+      width: calc(33.3% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 767px) {
+    .square {
+      width: 90%;
+      height: auto;
+      margin-bottom: 10px;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .carta {
+      width: 99%;
+    }
+  }
+  
+  /* Media queries para hacer las cursos responsivos */
+  @media screen and (max-width: 768px) {
+    .cursos {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .cursos {
+      width: 99%;
+    }
+  }
+  
+  /* Media queries para hacer las fotos responsivas */
+  @media screen and (max-width: 768px) {
+    .fotos {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .fotos {
+      width: 100%;
+    }
+  }
+  
+  /* Media queries para hacer el modal de imagen responsivo */
+  @media screen and (max-width: 400px) {
+    .modal-content-IMG {
+      width: 95%;
+      height: 95%;
+    }
+  }
+  

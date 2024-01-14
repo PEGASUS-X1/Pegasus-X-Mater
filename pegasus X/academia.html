@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="shortcut icon" href="./assets/img/PG.png" type="image/x-icon">
+  <!-- ======= Tarjeta  ======= -->
+  <meta name="description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <link rel="canonical" href="https://pegasus-v2.netlify.app/" />
+  <link rel="image_src" href="https://raw.githubusercontent.com/1RubiUwU1/pegasus.tk/main/img/PGX.PNG" id="image_src" />
+  <meta property="og:type" content="website" />
+  <meta property="fb:app_id" content="677288579025878" />
+  <meta property="fb:pages" content="122006227838751" />
+  <meta property="og:title" content="Pegasus X" />
+  <meta name="keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+  <meta name="news_keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+  
+  <meta property="og:url" content="https://pegasus-v2.netlify.app/" />
+  <meta property="og:image" content="https://raw.githubusercontent.com/1RubiUwU1/pegasus.tk/main/img/PGX.PNG" />
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:site_name" content="Pegasus X" />
+  <meta property="og:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+  <meta property="og:locale" content="es_ES" />
+  
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@NamazYunpio">
+  <meta name="twitter:title" content="Pegasus X">
+  <meta name="twitter:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/1RubiUwU1/pegasus.tk/main/img/PGX.PNG">
+  
+  <meta name="robots" content="index, follow" />
+  <meta name='googlebot' content='index, follow' />
+  
+  <!-- Dublin Core -->
+  <meta name="DC.title" content="Pegasus X" />
+  <meta name="DC.identifier" content="https://pegasus-v2.netlify.app/" />
+  <meta name="DC.description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+  <meta name="DC.language" content="es" />
+  <!-- fin Dublin Core -->
+  
+  <meta name=”GOOGLEBOT” content=”NOODP” />
+  <meta name=”Slurp” content=”NOODP” />
+  <meta name=”msnbot” content=”NOODP” />
+  
+  <!--favicon diferentes dispositivos + pwa-->
+  <link rel="manifest" href="/manifest.json">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Pegasus X">
+  <meta name="theme-color" content="#b10a0a">
+  <!-- ======= Tarjeta fin ======= -->
+
+
+    <title>Pegasus X</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/reproductor.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <link rel="stylesheet" href="./assets/css/btn.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    
+    <script>
+      // Código JavaScript en la página web
+      $(document).ready(function() {
+        // Verificar si el control de seguridad ya se realizó hoy
+        var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+        var today = new Date().toLocaleDateString();
+      
+        if (lastSecurityCheckDate === today) {
+          // Si el control ya se realizó hoy, omitirlo
+          showWelcomeMessage();
+        } else {
+          // Si es un nuevo día, realizar el control de seguridad
+          performSecurityCheck();
+        }
+      });
+      
+      function showWelcomeMessage() {
+        // Aquí puedes mostrar un mensaje de bienvenida, ya que el control de seguridad ya se realizó hoy
+        var username = localStorage.getItem('username');
+        if (username) {
+          var saludo = "¡Hola, " + username + " Bienvenido a la academia Genius!";
+          textoGenerado.textContent = saludo; // Actualizar el texto generado con el saludo
+        } else {
+          // Si no se ha proporcionado el nombre, volver a pedirlo
+          performSecurityCheck();
+        }
+        hideLoader(); // Ocultar el overlay ya que el control ya se realizó con éxito
+      }
+      
+      function performSecurityCheck() {
+        $.get("nombres.txt", function(nombreData) {
+          $.get("codigo.txt", function(codigoData) {
+            var nombres = nombreData.split("\n").map(function(nombre) {
+              return nombre.trim();
+            });
+      
+            var codigos = codigoData.split("\n").map(function(codigo) {
+              return codigo.trim();
+            });
+      
+            var maxAttempts = 3;
+            var attempts = 0;
+            var isAvisoMostrado = false;
+            var controluno = false;
+            var controldos = false;
+      
+            function showLoader() {
+              $("#overlay").fadeIn();
+            }
+      
+            function hideLoader() {
+              $("#overlay").fadeOut();
+            }
+      
+            function guardarDatos(nombre, codigo) {
+              var fechaHora = obtenerFechaHora(); // Obtener fecha y hora actual
+              var url = "https://script.google.com/macros/s/AKfycbxM5oMrRKHp9-mwiKSDpfsZ3RhbDXSNk7B4c_7Crj9w8-kQkTduK_QmU8pOxI050fe1Iw/exec";
+              var data = {
+                nombre: nombre,
+                codigo: codigo
+              };
+      
+              $.post(url, JSON.stringify(data), function(response) {
+                alert(response);
+              });
+            }
+      
+            function obtenerFechaHora() {
+              var now = new Date();
+              var fecha = now.toLocaleDateString();
+              var hora = now.toLocaleTimeString();
+              return fecha + " " + hora;
+            }
+      
+            function checkNombre() {
+              if (attempts < maxAttempts) {
+                if (!isAvisoMostrado) {
+                  alert("😈RECUERDA SI ERES ALGUIEN DESCONOCIDO Y TE EQUIVOQUES LAS 3 OPORTUNIDADES TU DIRECCIÓN IP SERA PUBLICADA CON TU NOMBRE ETC…😈"); // Mensaje de aviso antes de solicitar la contraseña
+                  isAvisoMostrado = true;
+                }
+      
+                if (!controluno) {
+                  alert("Control De Seguridad 1"); // Mensaje de aviso antes de solicitar la contraseña
+                  controluno = true;
+                }
+      
+                var username = prompt("Ingrese el nombre de seguridad");
+      
+                if (nombres.includes(username)) {
+                  checkCodigo(username); // Pasamos el nombre como argumento a la función checkCodigo
+                } else {
+                  attempts++;
+                  alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                  checkNombre();
+                }
+              } else {
+                showLoader();
+                setTimeout(hideLoader, 5000);
+                window.location.href = "404.html";
+              }
+            }
+      
+            function checkCodigo(username) { // Añadimos un parámetro "username"
+              if (attempts < maxAttempts) {
+      
+                if (!controldos) {
+                  alert("Control De Seguridad 2"); // Mensaje de aviso antes de solicitar la contraseña
+                  controldos = true;
+                }
+      
+                var codigo = prompt("Ingrese el código");
+      
+                if (codigos.includes(codigo)) {
+                  showLoader();
+                  setTimeout(function() {
+                    hideLoader();
+                    var saludo = "¡Hola, " + username + " Bienvenido a la academia Genius!"; // Concatenamos el nombre al saludo
+                    textoGenerado.textContent = saludo; // Actualizamos el texto generado con el saludo
+                    alert(" ✅ Acceso concedido ✅ ");
+                    guardarDatos(username, codigo); // Guardar los datos en Google Sheets
+      
+                    // Al finalizar el control de seguridad, guardar la fecha actual para evitar que se realice nuevamente hoy
+                    var today = new Date().toLocaleDateString();
+                    localStorage.setItem('lastSecurityCheckDate', today);
+      
+                    // Guardar el nombre de usuario para futuros saludos
+                    localStorage.setItem('username', username);
+                  }, 5000);
+                } else {
+                  attempts++;
+                  alert("Código incorrecto. Intento " + attempts + " de " + maxAttempts);
+                  checkCodigo(username); // Pasamos el nombre como argumento a la función checkCodigo
+                }
+              } else {
+                showLoader();
+                setTimeout(hideLoader, 5000);
+                window.location.href = "404.html";
+              }
+            }
+      
+            showLoader();
+            checkNombre();
+          });
+        });
+      }
+      
+      function showLoader() {
+        // Verificar si el control de seguridad ya se realizó con éxito en el mismo día
+        var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+        var today = new Date().toLocaleDateString();
+      
+        if (lastSecurityCheckDate !== today) {
+          $("#overlay").fadeIn();
+        }
+      }
+      
+      function hideLoader() {
+        $("#overlay").fadeOut();
+      }
+      
+          </script>
+</head>
+<body>
+
+  <!-- <section> -->
+    <div id="overlay">
+      <div id="loader">
+        <div class="loader-circle"></div>
+      </div>
+      <div id="loading-text">Cargando...</div>
+   </div>
+  
+   <div id="modal-saludo" class="modal-saludo">
+    <div class="modal-saludo-content">
+      <div class="titulo">
+          <h1 id="texto-generado"></h1>
+      </div>
+  
+    <p class="">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Fuga minus velit voluptates iusto vel officia officiis quas veritatis nobis! Dolorum eveniet, voluptatum modi rerum soluta dolore iusto fugit facere voluptate.</p>
+      <br>
+    <div class="botones">
+       <a class="btn gray" onclick="closeModalSaludo()" href="#">Acceder</a>
+      </div>
+    </div>
+  </div>
+
+
+    <div class="info">
+      <div class="iformacion-clase">
+        <span class="fecha-clase" id="fecha-clase">aaa</span>
+        <h1 class="titulo-clase" id="titulo-clase"></h1>
+        <p class="" id="T-notas"></p>
+        <div id="notas-container"></div>
+
+        <!-- <p class="notas" id="notas"></p> -->
+        <br>
+        <br>
+        <div class="conteiner-btn">
+          <a href="#" class="btn blue" id="cursos-abri">Ver Otras Clases</a>
+          <br>
+          <br>
+          <br>
+          <a id="download-img-fichas-clases" class="btn-red" href="#">Descargar Imagenes</a>
+        </div>
+        <br>
+        <br>
+      </div>
+      <div class="profesor-clases" id="profesor-clases" style="display: none;">
+          <h1 class="nombre-profesor" id="nombre-profesor"></h1>
+          <h2 class="area" id="area"></h2>
+        <img src="" class="profesor-img" id="profesor-img"  alt="">
+      </div>
+
+    </div>
+
+    <br>
+    
+      <div class="reproductor-clases" id="div-reproductor" style="display: none;">
+        <iframe id="reproductor-clases" src='' width="100%" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+      </div>
+
+
+
+      <div class="modal" id="cursos">
+        <div class="modal-content">
+          <span class="close close-modal-cursos">&times;</span>
+          <center>  
+          <section class="sistema-de-filtrado">  
+        
+          <div class="filtro">
+            <label for="filtro-grupo">Grupo:</label>
+              <br>
+            <select id="filtro-grupo">
+              <option value="todos">Todos</option>
+              <option value="A">Grupo A</option>
+              <option value="B">Grupo B</option>
+              <option value="Dinosaurios">Ordinario</option>
+            </select>
+          </div>
+        
+          <div class="filtro">
+            <label for="filtro-materia">Materia:</label>
+            <br>
+            <select id="filtro-materia">
+              <option value="todos">Todos</option>
+              <option value="Fisica">Fisica</option>
+              <option value="Geometria">Geometria</option>
+              <option value="Algebra">Algebra</option>
+              <option value="Trigonometria">Trigonometria</option>
+              <option value="Aritmetica">Aritmetica</option>
+              <option value="Biologia">Biologia</option>
+            </select>
+          </div>
+          
+          <div class="filtro">
+            <label for="filtro-mes">Mes:</label>
+            <br>
+            <select id="filtro-mes">
+              <option value="todos">Todos</option>
+              <option value="enero">Enero</option>
+              <option value="febrero">Febrero</option>
+              <option value="marzo">Marzo</option>
+              <!-- Agrega los meses restantes -->
+            </select>
+          </div>
+        
+        </section>
+        <div class="buscador">
+          <div class="search-container">
+              <input type="text" name="buscador" class="searchInput" id="searchInput" placeholder="Buscar...">
+              <i class="fas fa-search"></i>
+          </div>
+        </div>
+        </center>
+          <div id="cursos-container"></div>
+        
+        </div>
+        </div>
+        <br>
+<div class="chat">
+  <div id="disqus_thread"></div>
+<script>
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://genius-7.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</div>
+
+<script>
+  
+function openModal(modalId) {
+  var modal = document.getElementById(modalId);
+  modal.style.display = "block";
+}
+
+
+function closeModal(modalId) {
+  var modal = document.getElementById(modalId);
+  modal.style.display = "none";
+}
+
+function initializeModal(modalId, openBtnId, closeBtnClass) {
+  var openBtn = document.getElementById(openBtnId);
+  var modal = document.getElementById(modalId);
+  var closeBtn = modal.getElementsByClassName(closeBtnClass)[0];
+
+  openBtn.addEventListener("click", function() {
+    openModal(modalId);
+  });
+
+  closeBtn.addEventListener("click", function() {
+    closeModal(modalId);
+  });
+
+  window.addEventListener("click", function(event) {
+    if (event.target === modal) {
+      closeModal(modalId);
+    }
+  });
+}
+
+// Inicializar los modales
+initializeModal("cursos", "cursos-abri", "close-modal-cursos");
+
+document.addEventListener("keyup", e=>{
+
+  if (e.target.matches("#searchInput")){
+
+      if (e.key ==="Escape")e.target.value = ""
+
+      document.querySelectorAll(".cursos").forEach(fruta =>{
+
+          fruta.textContent.toLowerCase().includes(e.target.value.toLowerCase())
+            ?fruta.classList.remove("filtro-shar")
+            :fruta.classList.add("filtro-shar")
+      })
+
+  }
+
+
+})
+
+// Cursos
+document.addEventListener("DOMContentLoaded", function() {
+  var productos = [
+    {
+      profesor: "Deyvis",
+      tema: "Polinomios",
+      imagen: "./pato.jpg",
+      precio: "",
+      materia: "Algebra",
+      mes: "enero",
+      fecha: "27/032/321432",
+      grupo: "Dinosaurios",
+      src: "https://player.vimeo.com/video/851127159?badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479",
+      notas: ["Polinomio: Una expresión algebraica compuesta por términos, cada uno con un coeficiente multiplicado por una variable elevada a una potencia entera no negativa.", "Coeficiente: El número que multiplica a la variable en un término.", "Variable: La letra que representa una cantidad desconocida o variable en un polinomio.", "Exponente o Potencia: La cantidad a la que se eleva la variable en un término.", "Término constante: Un término sin variable, como un número real.", "Grado de un polinomio: El exponente más alto en el polinomio, que indica su complejidad.", "Monomio: Un término con un solo coeficiente y una sola variable elevada a una potencia."],
+      DownloadImgFichas: "https://drive.google.com/u/0/uc?id=1EB0UHLaA8IxxiAi8NPMcCKxYzZkyMbav&export=download"
+    },
+    {
+      profesor: "Profesor 2",
+      tema: "Tema 2",
+      imagen: "https://scontent.fcuz2-1.fna.fbcdn.net/v/t1.6435-9/167604330_276939697382379_5403060752492165355_n.jpg?_nc_cat=100&ccb=1-7&_nc_sid=be3454&_nc_eui2=AeF5Cr4BkhtTu7eYYgz8PlL6nM1-fFQDxe2czX58VAPF7e96Xy7KZm7M3LoIbuWZupMlk7GQsruOdDJlzpz2rPet&_nc_ohc=BK8hm7quegwAX_gyGY5&_nc_ht=scontent.fcuz2-1.fna&oh=00_AfAsr-DjpIGJHfVZz3t7YgSMBSjyRv-ghVoFPupahM5AMg&oe=650108E2",
+      precio: "",
+      src: "https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FVirtualPreU%2Fvideos%2F947511736341799%2F&show_text=false&width=560&t=0",
+      materia: "Geometria",
+      mes: "febrero",
+      fecha: "28/032/321432",
+      grupo: "B"
+    },
+    {
+      profesor: "Profesor 3",
+      tema: "Tema 3",
+      imagen: "08e30be2-8f94-4c2e-b443-1b28c79417b1.jpg",
+      precio: "",
+      materia: "Algebra",
+      mes: "febrero",
+      fecha: "28/032/321432",
+      src: "https://www.youtube.com/embed/VRLnSg8eex0",
+      grupo: "B"
+    },
+    {
+      profesor: "Profesor 2",
+      tema: "Tema 2",
+      imagen: "imagen2.jpg",
+      precio: "",
+      materia: "Trigonometria",
+      mes: "febrero",
+      fecha: "28/032/321432",
+      grupo: "B"
+    },
+    {
+      profesor: "Profesor 2",
+      tema: "Tema 2",
+      imagen: "imagen2.jpg",
+      precio: "",
+      materia: "Aritmetica",
+      mes: "febrero",
+      fecha: "28/032/321432",
+      grupo: "B",
+      src: "https://www.youtube.com/embed/BHc2E3pNgA0"
+    },
+    {
+      profesor: "Profesor 2",
+      tema: "Tema 2",
+      imagen: "imagen2.jpg",
+      precio: "",
+      materia: "Biologia", 
+      mes: "febrero",
+      fecha: "28/032/321432",
+      grupo: "B",
+      src: "https://www.youtube.com/embed/BHc2E3pNgA0"
+    }
+  ];
+
+  var cursosContainer = document.getElementById("cursos-container");
+  var reproductorIframe = document.getElementById("reproductor-clases");
+  var divvideo = document.getElementById('div-reproductor');
+  var filtroMateria = document.getElementById("filtro-materia");
+  var filtroMes = document.getElementById("filtro-mes");
+  var filtroGrupo = document.getElementById("filtro-grupo");
+// iformacion de la clase:
+var FechaClase = document.getElementById('fecha-clase');
+var notasContainer = document.getElementById('notas-container');
+var TituloClase = document.getElementById('titulo-clase');
+var DownloadImgFichas = document.getElementById('download-img-fichas-clases');
+var TitleNotas = document.getElementById('T-notas');
+// iformacion del profesor:
+var Divprofesor = document.getElementById('profesor-clases'); 
+var NombreProfesor = document.getElementById('nombre-profesor'); 
+var Area = document.getElementById('area');
+var ImgProfesor = document.getElementById('profesor-img');
+
+  // Función para filtrar los cursos según los criterios seleccionados
+  function filtrarCursos() {
+    var materiaSeleccionada = filtroMateria.value;
+    var mesSeleccionado = filtroMes.value;
+    var grupoSeleccionado = filtroGrupo.value;
+    var cursosFiltrados = [];
+
+    if (
+      materiaSeleccionada === "todos" &&
+      mesSeleccionado === "todos" &&
+      grupoSeleccionado === "todos"
+      ) {
+      cursosFiltrados = productos;
+    } else {
+      cursosFiltrados = productos.filter(function(curso) {
+        return (
+          (materiaSeleccionada === "todos" || curso.materia === materiaSeleccionada) &&
+          (mesSeleccionado === "todos" || curso.mes === mesSeleccionado) &&
+          (grupoSeleccionado === "todos" || curso.grupo === grupoSeleccionado)
+        );
+      });
+    }
+
+    mostrarCursos(cursosFiltrados);
+  }
+
+  // Función para mostrar las cartas de los cursos filtrados
+  function mostrarCursos(cursosMostrar) {
+    cursosContainer.innerHTML = "";
+
+    cursosMostrar.forEach(function(curso) {
+      var cursoDiv = document.createElement("div");
+      cursoDiv.classList.add("cursos");
+
+      var materiaTitulo = document.createElement("h3");
+      materiaTitulo.textContent = curso.materia;
+
+      var br = document.createElement("br");
+
+      var profesor = document.createElement("p");
+      profesor.textContent = "Profesor: " + curso.profesor;
+
+      // var TitleNotas = document.getElementById('T-notas');
+      // TitleNotas.textContent = "Costitas ricas BB";
+
+      var mes = document.createElement("p");
+      mes.textContent = "Mes: " + curso.mes;
+
+      var grupo = document.createElement("p");
+      grupo.textContent = "Grupo: " + curso.grupo;
+
+      var fecha = document.createElement("span");
+      fecha.classList.add("fechas-x")
+      fecha.textContent = "Fecha: " + curso.fecha;
+
+      var tema = document.createElement("p");
+      tema.textContent = "Tema: " + curso.tema;
+
+      var imagen = document.createElement("img");
+      imagen.src = curso.imagen;
+
+      var precio = document.createElement("p");
+      precio.classList.add("price");
+      precio.textContent = curso.precio;
+
+      var enlace = document.createElement("a");
+      enlace.classList.add("btn-red");
+      enlace.textContent = "Ver";
+        enlace.addEventListener("click", function() {
+          reproductorIframe.src = curso.src;
+          divvideo.style.display = ""; 
+          reproductorIframe.src = curso.src;
+          FechaClase.textContent = "Fecha: " + curso.fecha;
+          TituloClase.textContent = curso.tema;
+          DownloadImgFichas.href = curso.DownloadImgFichas;
+          // Notas.textContent = "⇰" + curso.notaAsnapo;
+          NombreProfesor.textContent = "Profesor: " + curso.profesor;
+          Area.textContent = "Curso: " + curso.materia;
+          ImgProfesor.src = curso.imagen;
+          TitleNotas.textContent = "Costitas ricas BB:";
+          Divprofesor.style.display = "";
+
+          mostrarNotas(curso.notas);
+          DownloadImgFichas.setAttribute('download', '');
+      });
+
+      function mostrarNotas(notas) {
+    notasContainer.innerHTML = ""; // Limpiar contenido anterior
+
+    notas.forEach(function(nota) {
+      var notaSpan = document.createElement("div");
+      notaSpan.textContent = "⇰ " + nota;
+      notasContainer.appendChild(notaSpan);
+    });
+  }
+
+      cursoDiv.appendChild(materiaTitulo);
+      cursoDiv.appendChild(profesor);
+      cursoDiv.appendChild(tema);
+      cursoDiv.appendChild(grupo);
+      cursoDiv.appendChild(mes);
+      cursoDiv.appendChild(fecha);
+      cursoDiv.appendChild(br);
+      cursoDiv.appendChild(imagen);
+      cursoDiv.appendChild(precio);
+      cursoDiv.appendChild(enlace);
+
+      cursosContainer.appendChild(cursoDiv);
+    });
+  }
+
+  // Evento change para los filtros
+  filtroMateria.addEventListener("change", filtrarCursos);
+  filtroMes.addEventListener("change", filtrarCursos);
+  filtroGrupo.addEventListener("change", filtrarCursos);
+
+  // Mostrar todos los cursos inicialmente
+  mostrarCursos(productos);
+});
+
+
+
+</script>
+
+<script>
+  // Obtiene el elemento h1 por su ID
+  var textoGenerado = document.getElementById("texto-generado");
+</script>
+
+<script src="./assets/js/home.js"></script>
+
+</body>
+
+</html>
