@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rubik+Glitch&display=swap');
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    min-width: 100vh;
+}
+.main{
+    background: url(./Assets/imgs/wallpaperbetter.com_1024x600.webp) right;
+    /* linear-gradient(to top, #000000,#000000d2, #000000ec ), */
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+.main #video{
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    background: cover;
+}
+.logos{
+    position: absolute;
+    width: 90%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.logos h1{
+    text-align: center;
+    font-family: 'Metal Mania', system-ui;
+    font-size: 8vh;
+    font-size: 8vh;
+    color: #ffffff;
+    text-shadow: 0 0 5px #ff0000, 0 0 15px #ff0000, 0 0 30px #ff0000;
+}
+
+.circulo{
+    position: fixed;
+    left: 15px;
+    bottom: 15px;
+    width: 120px;
+    height: 120px;
+    background: #00ff0000;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    /* display: none; */
+    animation: revelacion 10s linear;
+}
+@keyframes revelacion{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.circulo img{
+    position: absolute;
+    left: 50.2%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 80px;
+    height: 80px;
+}
+.text{
+    color: #ffffff;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    animation: circulo 15s linear infinite;
+}
+
+@keyframes circulo{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.text span{
+    font-family: 'Courier New', Courier, monospace;
+    position: absolute;
+    left: 50%;
+    font-size: 0.9em;
+    font-weight: bold;
+    /* letter-spacing: 20px; */
+    transform-origin: 0 65px ;
+}

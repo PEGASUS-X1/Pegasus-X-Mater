@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./pre.css">
+</head>
+<body>
+    <main class="main">
+        <video id="video" src="./Assets/audios/goku.mp4" autoplay></video>
+        <div class="logos">
+            <h1 class="presentacion">Bienvenid@ al portafolio de Joseph</h1>
+            <img src="" alt="">
+        </div>
+        <a href="" id="circulo" class="circulo">
+            <img src="./Assets/imgs/PG.png" alt="">
+            <div class="text">
+                <p>|El Equipo Pegasus X: Joseph - Rubi - Bryan|</p>
+            </div>
+        </a>
+    </main>
+    <script>
+        const text = document.querySelector(".text p")
+        text.innerHTML =  text.innerText.split("").map(
+            (char, i) =>
+            `<span style="transform:rotate(${i * 8}deg)">${char}</span>`
+        ).join("");
+    </script>
+    <script>
+        // Obtén la referencia al elemento de video
+        var miVideo = document.getElementById('video');
+      
+        // Agrega un event listener para el evento 'ended' (cuando el video termina)
+        miVideo.addEventListener('ended', function() {
+          // Oculta el elemento de video estableciendo su estilo a 'display: none;'
+          miVideo.style.display = 'none';
+        });
+      </script>
+</body>
+</html>
