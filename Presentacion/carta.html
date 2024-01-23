@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./carta.css">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+</head>
+<body>
+    <div class="carta">
+        <div class="imfomacion_personal" id="imfomacion_personal" style="--clr: lime;">
+            <div class="modos">
+                <span><i class="fa fa-sun"></i></span>
+                <span><i class="fa fa-luna"></i></span>
+            </div>
+            <div class="img_Nombre">
+                <img src="./Assets/imgs/324443985_3385240871715891_7814097938008960036_n.jpg" alt="" class="mienbro">
+                <h1 class="nombre_mienbro" style="--clr: lime;">Joseph (Pegasus X)</h1>
+            </div>
+            <p class="sub" >Sobre mi:</p>
+            <p class="historia" id="historia">Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores laboriosam illum dicta, cumque assumenda impedit officiis. Voluptate laboriosam numquam quos ea architecto et corporis a, omnis consequatur excepturi consequuntur non? Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum enim eaque consequatur id sunt minima quaerat beatae et facere? Architecto, numquam quasi? Deserunt, ducimus nobis nihil at sapiente ex nemo!</p>
+            <button id="Ver_mas">Ver mas</button>
+            <p class="sub" >Dominios:</p>
+            <div class="btn_lenguajes">
+                <button><i class="fab fa-html5"></i></button>
+                <button><i class="fab fa-css3-alt"></i></button>
+                <button><i class="fab fa-js"></i></button>
+            </div>
+        </div>
+    </div>
+    <script>
+        var Ver_mas = document.getElementById("Ver_mas");
+        var historia = document.getElementById("historia");
+
+// Define una variable para rastrear el estado actual
+var estadoVisible = true;
+
+// Agrega un evento de clic al elemento "Ver_mas"
+Ver_mas.onclick = function() {
+    // Alterna entre los dos conjuntos de estilos
+    if (estadoVisible) {
+        historia.style.overflow = "visible";
+        historia.style.height = "auto";
+        Ver_mas.textContent = "Ver menos";
+    } else {
+        historia.style.overflow = "hidden";
+        historia.style.height = "40px";
+        Ver_mas.textContent = "Ver mas";
+    }
+
+    // Invierte el valor de la variable para el próximo clic
+    estadoVisible = !estadoVisible;
+};
+    </script>
+</body>
+</html>
