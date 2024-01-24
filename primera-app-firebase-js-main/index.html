@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="main.css" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button id="button-login">Login with Google</button>
+      <button id="button-logout" class="hidden">Logout</button>
+      <div id="user-info"></div>
+
+      <div id="todos-container"></div>
+    </div>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-firestore.js"></script>
+
+    <script>
+      // Your web app's Firebase configuration
+      var firebaseConfig = {
+        apiKey: "AIzaSyBClYt_Sl2Z6TX9onQ1wjvwoSmLm2Tlai8",
+        authDomain: "dodo-3f36a.firebaseapp.com",
+        projectId: "dodo-3f36a",
+        storageBucket: "dodo-3f36a.appspot.com",
+        messagingSenderId: "994411779410",
+        appId: "1:994411779410:web:c37a1019da2bfa7a28968b"
+      };
+      // Initialize Firebase
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="app.js" type="module"></script>
+  </body>
+</html>
