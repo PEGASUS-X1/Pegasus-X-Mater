@@ -1,98 +1,72 @@
-function Comentar() {
-    var NombreDelComentario = localStorage.getItem("nombre");
-    var ImgDelComentario = "https://i.pinimg.com/564x/73/74/85/737485415532167f9fab09d621df9b9b.jpg";
-    var coment = $('#coment').val();
-    var multimedia = $('#Multimedia').val();
-    var urlcomente = $('#urlcomente').val();
+var bar = document.getElementById("bar");
+var bars = document.getElementById("bars");
+var closes = document.getElementById("closes");
 
-    if (ImgDelComentario.trim() !== '') {
-        $.ajax({
-            url: 'https://script.google.com/macros/s/AKfycbwz7SBycG361eHdQH4-UXEFwlApof34icSTfZw_QNWnWDXkyR0IV9-PRLcqVC_SFxkGXg/exec',
-            method: 'POST',
-            data: {
-                ImgDelComentario: ImgDelComentario,
-                NombreDelComentario: NombreDelComentario,
-                coment: coment,
-                Multimedia: multimedia,
-                urlcomente: urlcomente
-            },
-            success: function(response) {
-                alert('Agregado con éxito');
-                mostrarComentarios();
-            },
-            error: function(error) {
-                console.error('Error al agregar: ', error);
-            }
-        });
+function abrirBara() {
+    bar.classList.add("total");
+    bars.style.display = "none";
+    closes.style.display = "block";
+}
 
-        // Limpiar los campos después de agregar el comentario
-        $('#coment').val('');
-        $('#Multimedia').val('');
-        $('#urlcomente').val('');
+function CerrarBarra() {
+    bar.classList.remove("total");
+    bars.style.display = "block";
+    closes.style.display = "none";
+}
+
+var textoGenerado = document.getElementById("texto-generado");
+
+function modalNotificacion() {
+    var modalNoti = document.getElementById("modal-Notificaciones")
+    modalNoti.style.display = "block";
+}
+
+function modalNotificacionX() {
+    var modalNoti = document.getElementById("modal-Notificaciones")
+    modalNoti.style.display = "none";
+}
+
+var infor = document.getElementById("infor");
+
+infor.onclick = function () {
+    var setingt = document.getElementById("setingt");
+    setingt.style.display = "block";
+    setTimeout(() => {
+        var setingt = document.getElementById("setingt");
+        setingt.style.display = "none";
+    }, 5000);
+}
+
+function salir() {
+    localStorage.removeItem("lastSecurityCheckDate");
+    location.reload();
+}
+
+function BorrarTodo() {
+    localStorage.clear();
+    location.reload();
+}
+
+document.addEventListener('DOMContentLoaded', function () {
+    verificarLogo();
+    var intervalo = setInterval(verificarLogo, 1000);
+
+});
+
+function verificarLogo() {
+    var logo = document.getElementById("overlay");
+
+    if (!logo) {
+
+        var audio = new Audio('./assent/audio/señora_su_hijo_su_hijo_esta_viendo_nopor.mp3');
+        audio.play();
+
+        document.body.innerHTML = `    
+      <h1 style="font-size: 50px;  position: fixed; z-index:10000; background: #000 ; color: #fff;  top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);"> jajajaja capo te crees</h1> 
+      `;
+
+        clearInterval(intervalo);
     }
 }
-
-function mostrarComentarios() {
-    $.ajax({
-        url: 'https://script.google.com/macros/s/AKfycbwz7SBycG361eHdQH4-UXEFwlApof34icSTfZw_QNWnWDXkyR0IV9-PRLcqVC_SFxkGXg/exec',
-        method: 'GET',
-        success: function(response) {
-            var Cajadecomentarios = $('#Cajadecomentarios');
-            Cajadecomentarios.empty();
-
-            response.forEach(function(Comentario) {
-                const comentariosuser = document.createElement('div');
-                comentariosuser.className = 'comentarios-user';
-
-                const superr = document.createElement('div');
-                superr.className = 'comentarios-super';
-
-                if (Comentario.ImgDelComentario) {
-                    const imagen = document.createElement('img');
-                    imagen.src = Comentario.ImgDelComentario;
-                    imagen.className = 'comentarios-imagen-user';
-                    superr.append(imagen);
-                }
-
-                const NombreDelComentario = document.createElement('p');
-                NombreDelComentario.textContent = Comentario.NombreDelComentario + " dice:";
-                NombreDelComentario.className = 'comentarios-NombreDelComentario-user';
-                superr.append(NombreDelComentario);
-
-                comentariosuser.append(superr);
-
-                const bajo = document.createElement('div');
-                bajo.className = 'comentarios-bajo';
-
-                const ComentarioElement = document.createElement('p');
-                ComentarioElement.textContent = Comentario.coment;
-                ComentarioElement.className = 'comentarios-ComentarioElement-user';
-                bajo.append(ComentarioElement);
-
-                if (Comentario.Multimedia) {
-                    const Im = document.createElement('img');
-                    Im.src = Comentario.Multimedia;
-                    Im.className = 'comentarios-Im-user';
-                    bajo.append(Im);
-                }
-
-                if (Comentario.urlcomente) {
-                    const iframecoment = document.createElement('iframe');
-                    iframecoment.src = Comentario.urlcomente;
-                    iframecoment.className = 'comentarios-iframe-user';
-                    bajo.append(iframecoment);
-                }
-
-                comentariosuser.append(bajo);
-                Cajadecomentarios.append(comentariosuser);
-            });
-        },
-        error: function(error) {
-            console.error('Error', error);
-        }
-    });
-}
-
-$(document).ready(function() {
-    mostrarComentarios();
-});

@@ -13,406 +13,70 @@
 
     <link rel="stylesheet" href="./assent/css/style.css">
     <link rel="stylesheet" href="./assent/css/base.css">
-    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="./assent/js/pas.min.js"></script>
-    <script>
-        var usuariosContrasenas = {
-            "admin": {
-                password: "admin",
-                modelo: "Premiun",
-                imagen: "./assent/img/4bd8bf55bab7954a317e3205fd832b05.jpg",
-                mensajes: [
-                    {
-                        MensajeClass: "mensaje-card",
-                        NombreDelMensaje: "aaaaa",
-                        ImgDelMensaje: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg",
-                        VideoDelMensaje: "",
-                        ContenidoDelMensaje: "",
-                        UrlDelMensaje: "",
-                        conternedor: null
-                    },
-                    {
-                        MensajeClass: "mensaje-baner",
-                        NombreDelMensaje: "",
-                        ImgDelMensaje: "",
-                        BanerDelMensaje: "https://media.discordapp.net/attachments/1183035326701240370/1183047771280900208/F24EC46344BA7EE66BADB727BAAF0F99DBA079B0BC7B80D445B9CCD49F2BBA61.jpg",
-                        VideoDelMensaje: "",
-                        ContenidoDelMensaje: null,
-                        UrlDelMensaje: "",
-                        conternedor: [
-                            `
-                    <span class="descuento">30%</span>
-                        <div class="baner-tex" style="--clr:#ffd900">
-                            <div class="infos" >
-                                <span class="alertas" style="--clr:#ffd900"><i class="fa fa-triangle-exclamation"></i> La seguridad esta mal <i class="fa fa-triangle-exclamation"></i></span>
-                            </div>
-                            <h1>Demon Slayer</h1>
-                            <p class="sinopsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus odio alias minus minima delectus neque tenetur consectetur iusto, saepe fugiat laudantium quis deserunt, eveniet unde maxime excepturi facere nobis ipsum?</p>
-                        </div>
-                    `
-                        ]
-                    }
-                ]
-            },
-            "Rubi": {
-                password: "Rubi",
-                modelo: "Premiun",
-                imagen: "./assent/img/4bd8bf55bab7954a317e3205fd832b05.jpg",
-                mensajes: [
-                    {
-                        NombreDelMensaje: "",
-                        ImgDelMensaje: "",
-                        VideoDelMensaje: "",
-                        UrlDelMensaje: ""
-                    },
-                    {
-                        NombreDelMensaje: "",
-                        ImgDelMensaje: "",
-                        VideoDelMensaje: "",
-                        UrlDelMensaje: ""
-                    }
-                ]
-            }
-        };
-        $(document).ready(function () {
-            var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
-            var today = new Date().toLocaleDateString();
-
-            if (lastSecurityCheckDate === today) {
-                showWelcomeMessage();
-            } else {
-                performSecurityCheck();
-            }
-        });
-
-        function showWelcomeMessage() {
-            var username = localStorage.getItem('username');
-
-            if (username) {
-
-                var mensajeGeneral = `
-                    <span class="descuento">30%</span>
-                        <div class="baner-tex" style="--clr:#ffd900">
-                            <div class="infos" >
-                                <span class="alertas" style="--clr:#ffd900"><i class="fa fa-triangle-exclamation"></i> La seguridad esta mal <i class="fa fa-triangle-exclamation"></i></span>
-                            </div>
-                            <h1>Demon Slayer</h1>
-                            <p class="sinopsis">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus odio alias minus minima delectus neque tenetur consectetur iusto, saepe fugiat laudantium quis deserunt, eveniet unde maxime excepturi facere nobis ipsum?</p>
-                        </div>
-                    `;
-                var mensajeDiv = document.createElement("div");
-                mensajeDiv.className = "mensaje-baner";
-                mensajeDiv.innerHTML = mensajeGeneral;
-                document.getElementById("mensajes-container").appendChild(mensajeDiv);
-
-                $(".user").text(username);
-                var saludo = "User: " + username;
-                document.getElementById("texto-generado").textContent = saludo;
-
-                var TipoModelos = localStorage.getItem('TipoModelo');
-
-                if (TipoModelos) {
-                    var TipoModelo = document.getElementById("Modelo-user");
-                    TipoModelo.textContent = TipoModelos;
-
-                    if (TipoModelos === "Premiun") {
-                        var passwordElement = document.getElementById("password");
-                        passwordElement.style.display = "none";
-                        var TipoModelo = document.getElementById("Modelo-user");
-                        TipoModelo.textContent = "💎 " + TipoModelos + " 💎";
-                        //TipoModelo.style.background = "#00ffc8";
-                    }
-                }
-
-                var mensajes = localStorage.getItem('mensajes');
-                if (mensajes) {
-                    mensajes = JSON.parse(mensajes);
-                    var mensajesDiv = document.getElementById("mensajes-container");
-
-                    mensajes.forEach(function (mensaje) {
-                        var mensajeDiv = document.createElement("div");
-                        mensajeDiv.className = mensaje.MensajeClass;
-                        mensajeDiv.style.background = "url(" + mensaje.BanerDelMensaje + ") center";
-                        mensajeDiv.style.backgroundSize = "cover";
-                        mensajeDiv.style.backgroundRepeat = "";
-                        //mensajeDiv.innerHTML = "<h3>" + mensaje.NombreDelMensaje + "</h3>";
-
-                        const NombreMensaje = document.createElement('h1');
-                        NombreMensaje.textContent = mensaje.NombreDelMensaje;
-                        NombreMensaje.className = 'mensaje-Nombre';
-
-                        const imgMensaje = document.createElement('img');
-                        imgMensaje.src = mensaje.ImgDelMensaje;
-                        imgMensaje.className = 'mensaje-img';
-
-                        const ContenidoMensaje = document.createElement('p');
-                        ContenidoMensaje.textContent = mensaje.ContenidoDelMensaje;
-                        ContenidoMensaje.className = 'mensaje-Contenido';
-
-                        const Mensajebaner = document.createElement('div');
-                        Mensajebaner.innerHTML = mensaje.conternedor;
-
-                        mensajeDiv.appendChild(NombreMensaje);
-                        mensajeDiv.appendChild(imgMensaje);
-                        mensajeDiv.appendChild(ContenidoMensaje);
-                        mensajeDiv.appendChild(Mensajebaner);
-                        mensajesDiv.appendChild(mensajeDiv);
-                    });
-                }
-
-                var imagenUsuarioURL = localStorage.getItem('imagenUsuario');
-
-                if (imagenUsuarioURL) {
-                    var imagenUsuario = document.getElementById("img-user");
-                    imagenUsuario.src = imagenUsuarioURL;
-                    imagenUsuario.alt = "Imagen de Usuario";
-                }
-            } else {
-                performSecurityCheck();
-            }
-            hideLoader();
-        }
-
-        function performSecurityCheck() {
-            var maxAttempts = 3;
-            var attempts = 0;
-            var isAvisoMostrado = false;
-            var controluno = false;
-            var controldos = false;
-
-            function showLoader() {
-                $("#overlay").fadeIn();
-            }
-
-            function hideLoader() {
-                $("#overlay").fadeOut();
-            }
-
-            function guardarDatos(nombre) {
-                //var fechaHora = obtenerFechaHora();
-                //var url = "https://script.google.com/macros/s/AKfycby1aVTFUQOvTLePapUGtgR-nZ49jo_Z3NDJBQpbIFM_o0ucMMBzOlVXwcqHjqD--N27/exec";
-                //var data = {
-                //    nombre: nombre
-                //};
-
-                //$.post(url, JSON.stringify(data), function (response) {
-                //    alert(response);
-                //});
-
-                var lastReloadDate = localStorage.getItem('lastReloadDate');
-                var today = new Date().toLocaleDateString();
-
-                if (lastReloadDate !== today) {
-                    setTimeout(function () {
-                        localStorage.setItem('lastReloadDate', today);
-                        window.location.reload();
-                    }, 5000);
-                }
-            }
-
-            function obtenerFechaHora() {
-                var now = new Date();
-                var fecha = now.toLocaleDateString();
-                var hora = now.toLocaleTimeString();
-                return fecha + " " + hora;
-            }
-
-            function checkNombre() {
-                if (attempts < maxAttempts) {
-                    if (!isAvisoMostrado) {
-                        alert("😋 ¡Hola! Es hora de acceder. 😋\n🤭 Si no tienes tus claves, accede a este\n🔗 link: 'pegasus-v2.tk/registro' 🔗 para obtener tu acceso. 😏\n\n☠️ ¡No te equivoques! ☠️");
-                        isAvisoMostrado = true;
-                    }
-
-                    if (!controluno) {
-                        alert("Control De Seguridad 1");
-                        controluno = true;
-                    }
-
-                    var username = prompt("Ingrese el nombre de seguridad");
-
-                    if (usuariosContrasenas.hasOwnProperty(username)) {
-                        checkCodigo(username);
-                    } else {
-                        attempts++;
-                        alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
-                        checkNombre();
-                    }
-                } else {
-                    showLoader();
-                    setTimeout(hideLoader, 5000);
-                    window.location.href = "404.html";
-                }
-            }
-
-            function checkCodigo(username) {
-                if (attempts < maxAttempts) {
-                    if (!controldos) {
-                        alert("Control De Seguridad 2");
-                        controldos = true;
-                    }
-
-                    var codigo = prompt("Ingrese la contraseña");
-
-                    if (usuariosContrasenas[username].password === codigo) {
-                        showLoader();
-                        setTimeout(function () {
-                            hideLoader();
-                            var saludo = username;
-                            textoGenerado.textContent = saludo;
-
-                            var TipoModelos = usuariosContrasenas[username].modelo;
-                            var TipoModelo = document.getElementById("Modelo-user");
-                            TipoModelo.textContent = TipoModelos;
-                            localStorage.setItem('TipoModelo', TipoModelos);
-
-                            // Agregar imagen de usuario aquí
-                            var imagenUsuarioURL = usuariosContrasenas[username].imagen;
-                            var imagenUsuario = document.getElementById("img-user");
-                            imagenUsuario.src = imagenUsuarioURL;
-                            imagenUsuario.alt = "Imagen de Usuario";
-                            // document.getElementById("texto-generado").appendChild(imagenUsuario);
-
-                            // Almacenar la URL de la imagen en el almacenamiento local
-                            localStorage.setItem('imagenUsuario', imagenUsuarioURL);
+    <script type="module" src="./assent/js/auth.js"></script>
 
 
-                            var mensajes = usuariosContrasenas[username].mensajes;
-
-                            if (mensajes) {
-                                var mensajesDiv = document.getElementById("mensajes-container");
-                                localStorage.setItem('mensajes', JSON.stringify(mensajes));
-
-                                mensajes.forEach(function (mensaje) {
-                                    var mensajeDiv = document.createElement("div");
-                                    mensajeDiv.className = mensaje.MensajeClass;
-                                    mensajeDiv.style.background = "url(" + mensaje.BanerDelMensaje + ") center";
-                                    mensajeDiv.style.backgroundSize = "cover";
-                                    mensajeDiv.style.backgroundRepeat = "";
-                                    //mensajeDiv.innerHTML = "<h3>" + mensaje.NombreDelMensaje + "</h3>";
-
-                                    const NombreMensaje = document.createElement('h1');
-                                    NombreMensaje.textContent = mensaje.NombreDelMensaje;
-                                    NombreMensaje.className = 'mensaje-Nombre';
-
-                                    const imgMensaje = document.createElement('img');
-                                    imgMensaje.src = mensaje.ImgDelMensaje;
-                                    imgMensaje.className = 'mensaje-img';
-
-                                    const ContenidoMensaje = document.createElement('p');
-                                    ContenidoMensaje.textContent = mensaje.ContenidoDelMensaje;
-                                    ContenidoMensaje.className = 'mensaje-Contenido';
-
-                                    const Mensajebaner = document.createElement('div');
-                                    Mensajebaner.innerHTML = mensaje.conternedor;
-
-                                    mensajeDiv.appendChild(NombreMensaje);
-                                    mensajeDiv.appendChild(imgMensaje);
-                                    mensajeDiv.appendChild(ContenidoMensaje);
-                                    mensajeDiv.appendChild(Mensajebaner);
-                                    mensajesDiv.appendChild(mensajeDiv);
-                                });
-                            }
-
-
-                            if (username === 'admin') {
-                                // Mostrar una alerta específica para el usuario 'admin'
-                                alert("¡Acceso de administrador!");
-                            } else {
-                                alert(" ✅ Acceso concedido ✅ ");
-                            }
-                            //if (usuariosContrasenas[username].mensaje) {
-                            //    alert(usuariosContrasenas[username].mensaje);
-                            //}
-
-                            guardarDatos(username, imagenUsuarioURL, TipoModelos);
-
-                            var today = new Date().toLocaleDateString();
-                            localStorage.setItem('lastSecurityCheckDate', today);
-
-                            localStorage.setItem('username', username);
-                        }, 5000);
-                    } else {
-                        attempts++;
-                        alert("Contraseña incorrecta. Intento " + attempts + " de " + maxAttempts);
-                        checkCodigo(username);
-                    }
-                } else {
-                    showLoader();
-                    setTimeout(hideLoader, 5000);
-                    window.location.href = "404.html";
-                }
-            }
-            showLoader();
-            checkNombre();
-        }
-
-        function showLoader() {
-            var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
-            var today = new Date().toLocaleDateString();
-
-            if (lastSecurityCheckDate !== today) {
-                $("#overlay").fadeIn();
-                
-            }
-        }
-
-        function hideLoader() {
-            $("#overlay").fadeOut();
-        }
-    </script>
 </head>
 
 <body>
+
     <div id="overlay">
+        <h1>Registrate Para Acceder</h1>
         <div id="loader">
             <div class="loader-circle"></div>
         </div>
-        <div id="loading-text">Cargando...</div>
+        <div class="btns">
+            <button type="button" class="googleLogin" id="googleLogin">Login with Google</button>
+            <p id="espera"></p>
+        </div>
     </div>
-    <div id="password"></div>
+    <!-- <div id="password"></div> -->
     <div class="main">
-        <span class="climas" id="climas"><i class="fa fa-sun"></i> Clima <i class="fa fa-snowflake" ></i></span>
+        <span class="climas" id="climas"><i class="fa fa-sun"></i> Clima <i class="fa fa-snowflake"></i></span>
         <div class="tiempo" id="tiempo">
             <div class="general-information">
-              <div class="city" id="city"></div>
-              <div class="temperature">
-                <i id="temp-img" class="fas fa-3x"></i>
-                <div class="temp" id="temp"></div>
-              </div>
+                <div class="city" id="city"></div>
+                <div class="temperature">
+                    <i id="temp-img" class="fas fa-3x"></i>
+                    <div class="temp" id="temp"></div>
+                </div>
             </div>
             <div class="sg-information">
-            <div class="date" id="date"></div>
-            <div class="weather" id="weather"></div>
+                <div class="date" id="date"></div>
+                <div class="weather" id="weather"></div>
             </div>
         </div>
         <div class="bar" id="bar">
             <button class="bars" id="bars" onclick="abrirBara()"><i class="fa fa-bars"></i></button>
             <button class="closes" id="closes" onclick="CerrarBarra()"><i class="fa fa-times"></i></button>
             <div class="btns">
+                <button class="bar_btn" id=""><i class="fa fa-table"></i><span class="sub">Tablas</span></button>
+                <button class="bar_btn" id=""><i class="fas fa-comment-dots"></i><span class="sub grande">Trabajo En Equipo</span></button>
                 <button class="bar_btn" id="changeBackgroundBtn"><i class="fa fa-file"></i><span class="sub">Background</span></button>
                 <button class="bar_btn"><i class="fa fa-clock"></i><span class="sub">Alarmas</span></button>
                 <button class="bar_btn"><i class="fa fa-sticky-note"></i><span class="sub">Notas</span></button>
                 <button class="bar_btn" onclick="modalNotificacion();"><i class="fa fa-bell"></i><span class="sub">Notificaciones</span></button>
-                <button class="bar_btn" onclick="modal_abrir_controlador_almacenador();"><i class="fa fa-cog"></i><span class="sub" > Settings  </span></button>
+                <button class="bar_btn a-setingt" onclick="modal_abrir_controlador_almacenador();"><i class="fa fa-cog"></i><span class="sub"> Settings </span></button>
+
             </div>
             <div class="users">
                 <div class="setingt" id="setingt">
-                    <button class="clear_data_base" onclick="BorrarTodo()"><i class="fa fa-trash"></i> Borrar
-                        Todo</button>
-                    <button class="salir" onclick="salir()"><i class="fa fa-sign-out-alt"></i> Salir</button>
+                    <button class="clear_data_base" onclick="BorrarTodo()"><i class="fa fa-trash"></i> Borrar Todo</button>
+                    <button class="salir hidden"id="logout" ><i class="fa fa-sign-out-alt"></i> Salir</button>
                 </div>
                 <div id="infor">
                     <div class="informacion">
-                        <span class="Modelo-user" id="Modelo-user"></span>
-                        <span class="texto-generado" id="texto-generado"></span>
+                        <input class="texto-generado" id="texto-generado">
+                        <input type="text" class="texto-Gmail" id="texto-Gmail">
                     </div>
                     <img src="" id="img-user" alt="">
                 </div>
             </div>
         </div>
         <div class="modal" id="controlador_almacenador">
-            <span  onclick="modal_cerrar_controlador_almacenador()" class="close"><i class="fa fa-times"></i></span>
+            <span class="close" onclick="modal_cerrar_controlador_almacenador()"><i class="fa fa-times"></i></span>
             <select name="" id="Server">
                 <option value="" disabled selected> Selecione Una Tipo De Guardado </option>
                 <option value="Local_Store">Local Store</option>
@@ -439,26 +103,28 @@
                         <a href="#" class="ir_paso">Ir</a>
                     </div>
                 </figure>
-                
+
             </div>
         </div>
 
         <div id="modal_background" class="modal">
             <div class="modal-content">
-                <span class="close"><i class="fa fa-times"></i></span>
+                <span class="close" id="close_background"><i class="fa fa-times"></i></span>
                 <h1 class="titulo">Canbiar Img</h1>
                 <input type="file" id="backgroundInput" accept="image/*">
             </div>
         </div>
 
-        <div class="tableros">
+        <div class="tableros" style="display: none;">
             <div class="buscador">
                 <select name="" id="TipoDeRed">
-                    <option value="https://www.google.com/search">Google</option>
-                    <option value="https://www.youtube.com/results">Youtube</option>
-                    <option value=""></option>
+                    <!-- <option value="">Selec</option> -->
+                    <option value="google">Google</option>
+                    <option value="youtube">Youtube</option>
+                    <option value="Tokio">Tokio</option>
                 </select>
-                <input type="text" id="Nombre_buscado" onkeydown="buscar(event)">
+                <input type="text" id="Nombre_buscado" onkeydown="checkEnter(event)">
+                <button class="buscar" id="buscar" onclick="buscar()">Buscar</button>
             </div>
             <div class="contenedor-tableros">
                 <div class="tablero" id="tab1">
@@ -518,154 +184,36 @@
             </div>
         </div>
     </div>
-    <script>
-        function mostrarFavicon() {
-            var urlInput = document.getElementById('Url').value;
-            var faviconInput = document.getElementById('faviconInput');
-
-            // Extraer el dominio de la URL
-            var dominio = obtenerDominio(urlInput);
-
-            // Construir la URL del favicon
-            var faviconUrl = 'https://www.google.com/s2/favicons?domain=' + dominio;
-
-            // Establecer el valor del campo de entrada del favicon
-            faviconInput.value = faviconUrl;
-        }
-
-        function obtenerDominio(url) {
-            var a = document.createElement('a');
-            a.href = url;
-            return a.hostname;
-        }
-    </script>
     <div class="modal-Notificaciones" id="modal-Notificaciones">
         <span class="close" onclick="modalNotificacionX()">&times;</span>
         <div class="titulo-modal">
             <h1>Notificaciones</h1>
         </div>
-        <div id="mensajes-container"></div>
+        <form id="formulario-publicacion" style="display: none;">
+            <label for="titulo">Título:</label>
+            <input type="text" id="titulo" name="titulo" required>
+        
+            <label for="contenido">Contenido:</label>
+            <textarea id="contenido" name="contenido" required></textarea>
+        
+            <button type="submit">Publicar</button>
+        </form>
+        <div id="mensajes-container ">
+            <div class="posts"></div>
+        </div>
+
     </div>
-    <script>
-        $(document).ready(function () {
-            // Cargar botones almacenados en el localStorage al iniciar
-            cargarBotones();
-
-            // Evento de clic en el botón "Agregar Btn"
-            $("#Agregar").on("click", function () {
-                // Obtener valores del modal
-                var selectedTablero = $("#selec_tableros").val();
-                var nombreBtn = $("#Nombre").val();
-                var urlBtn = $("#Url").val();
-                var colorBtn = $("#color").val();
-                var colorBtnBac = $("#colorBtnBac").val();
-                var Faviconsrc = $("#faviconInput").val();
-
-                // Crear el contenedor div para el botón y el ícono de eliminar
-                var contenedor = document.createElement("div");
-                contenedor.className = "conternedora";
-                contenedor.id = "btn_" + Date.now();  // Usar una marca de tiempo única como identificador
-
-                var ImgIcon = document.createElement("img");
-                ImgIcon.src = Faviconsrc;
-                // Crear el botón con los valores dados
-                var nuevoBtn = document.createElement("a");
-                nuevoBtn.href = urlBtn;
-                nuevoBtn.className = "links";
-                nuevoBtn.style.backgroundColor = colorBtnBac;
-                nuevoBtn.style.color = colorBtn;
-                nuevoBtn.textContent = nombreBtn;
-
-                // Crear el ícono de eliminar
-                var removebtn = document.createElement("i");
-                removebtn.className = "fa fa-trash-can";
-                removebtn.id = "removebtn";
-                removebtn.onclick = function () {
-                    // Eliminar el botón y guardarlo en el localStorage
-                    eliminarBoton(selectedTablero, contenedor.id);
-                };
-
-                // Agregar el botón y el ícono de eliminar al contenedor
-                nuevoBtn.appendChild(ImgIcon);
-
-                contenedor.appendChild(nuevoBtn);
-                contenedor.appendChild(removebtn);
-
-                // Agregar el contenedor al tablero seleccionado
-                $("#" + selectedTablero + " .btns_links").append(contenedor);
-
-                // Guardar el botón en el localStorage
-                guardarBoton(selectedTablero, contenedor.outerHTML);
-
-                // Cerrar el modal (puedes ajustar esto según tu implementación)
-                $("#modal").hide();
-            });
-
-            // Función para cargar botones almacenados en el localStorage
-            function cargarBotones() {
-                for (var i = 1; i <= 3; i++) {
-                    var storedButtons = JSON.parse(localStorage.getItem('botones_tablero' + i)) || [];
-                    for (var j = 0; j < storedButtons.length; j++) {
-                        var contenedor = document.createElement("div");
-                        contenedor.innerHTML = storedButtons[j];
-                        $("#" + 'tab' + i + " .btns_links").append(contenedor);
-                        // Añadir eventos a los botones cargados
-                        agregarEventosBotones(contenedor);
-                    }
-                }
-            }
-
-            // Función para guardar un botón en el localStorage
-            function guardarBoton(tablero, nuevoBtnHTML) {
-                var storedButtons = JSON.parse(localStorage.getItem('botones_tablero' + tablero.slice(-1))) || [];
-                storedButtons.push(nuevoBtnHTML);
-                localStorage.setItem('botones_tablero' + tablero.slice(-1), JSON.stringify(storedButtons));
-
-            }
-
-            // Función para eliminar un botón y guardarlo en el localStorage
-            function eliminarBoton(tablero, idContenedor) {
-                // Eliminar el contenedor del DOM
-                $("#" + idContenedor).remove();
-
-                // Eliminar el botón del localStorage
-                var storedButtons = JSON.parse(localStorage.getItem('botones_tablero' + tablero.slice(-1))) || [];
-                storedButtons = storedButtons.filter(function (botonHTML) {
-                    return botonHTML.indexOf(idContenedor) === -1;
-                });
-                localStorage.setItem('botones_tablero' + tablero.slice(-1), JSON.stringify(storedButtons));
-
-            }
-
-            // Función para agregar eventos a los botones
-            function agregarEventosBotones(contenedor) {
-                var removebtn = contenedor.querySelector('.fa-trash-can');
-
-                removebtn.onclick = function () {
-                    var selectedTablero = obtenerNumeroTablero(contenedor.parentNode.id);
-                    eliminarBoton('tab' + selectedTablero, contenedor.id);
-                };
-            }
-
-            // Función para obtener el número del tablero a partir del ID
-            function obtenerNumeroTablero(tableroId) {
-                return tableroId.replace('tab', '');
-            }
-
-            // ... (resto del código)
-        });
-
-        // Agregar evento después de cargar la página para manejar eventos en botones
-        $(window).on('load', function () {
-            // Recorrer todos los contenedores de botones y agregar eventos
-            $('.conternedora').each(function () {
-                agregarEventosBotones(this);
-            });
-        });
-    </script>
 
 
+    
+    <script src="./assent/js/background.js"></script>
+    <script src="./assent/js/barra.js"></script>
     <script src="./assent/js/base.js"></script>
+    <script src="./assent/js/buscador.js"></script>
+    <script src="./assent/js/pas.min.js"></script>
+    <script src="./assent/js/tablas.js"></script>
+    <script src="./assent/js/Tiempo.js"></script>
+    <script src="./assent/js/main.js" type="module"></script>
 </body>
 
 </html>

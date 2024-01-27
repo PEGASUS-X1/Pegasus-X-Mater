@@ -2,14 +2,18 @@ body {
     background: #ffffff;
     background: url(../img/triste.webp) center no-repeat fixed;
     background-size: cover;
+    min-height: 100vh;
+    min-width: 100%;
 }
-
+::-webkit-scrollbar{
+    display: none;
+}
 .bar {
     z-index: 3;
     position: fixed;
     max-width: 100%;
     width: 50px;
-    border: 1px solid #fff;
+    /* border: 1px solid #fff; */
     background: #0000005e;
     align-items: center;
     /* Centrar horizontalmente el contenido */
@@ -28,9 +32,13 @@ body {
     position: absolute;
     top: 50%;
     left: 50%;
+    /* height: 50vh; */
     transform: translate(-50%, -50%);
 }
-
+.bar .closes{
+    margin-top: 5px;
+    font-size: 25px;
+}
 .bar .bars,
 .closes,
 .bar_btn {
@@ -38,7 +46,7 @@ body {
     max-width: 100%;
     text-decoration: none;
     border: none;
-    font-size: 3.5vh;
+    font-size: 3vh;
     background: #00000000;
     color: #fff;
     position: relative;
@@ -57,20 +65,33 @@ body {
 .bar .sub {
     display: none;
     position: absolute;
-    transform: translate(+10px);
+    top: 50%;
+    transform: translate(+10px, -50%);
 }
 
 .bar button:hover .sub {
     /* border-left: 30px solid #000; */
     line-height: 35px;
     width: auto;
+    text-align: left;
     padding-left: 10px;
     padding-right: 10px;
     font-size: 20px;
     background: #0000009a;
     display: inline;
 }
+.bar button:hover .grande{
+    width: 220px;
+}
 
+.a-setingt{
+    position: absolute;
+    bottom: -70%;
+}
+
+.bar.total .a-setingt {
+    position: relative;
+}
 .bar .users .informacion {
     display: none;
 }
@@ -105,6 +126,18 @@ body {
     border: 1px solid #fff;
 }
 
+
+.bar.total .users .setingt{
+    background: #000;
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, -120%);
+    display: none;
+    width: 90%;
+    height: 90px;
+    border: 1px solid #fff;
+}
 .bar .users .setingt button {
     cursor: pointer;
     display: block;
@@ -134,9 +167,11 @@ body {
     z-index: 1;
     text-align: center;
     max-width: 100%;
+    min-height: 650px;
     /* border: 2px solid #000; */
     width: 900px;
-    height: 650px;
+    height: 660px;
+    margin-top: 20px;
     position: absolute;
     top: 50%;
     left: 52.5%;
@@ -148,7 +183,7 @@ body {
     margin: 0 auto;
     margin-top: 10px;
     /* width: 95%; */
-    height: 92%;
+    height: 600px;
 }
 
 .tablero {
@@ -180,7 +215,7 @@ body {
 .tablero h1 {
     margin-top: 10px;
     font-weight: 1;
-    font-size: 4vh;
+    font-size: 3vh;
     color: #fff;
     /* margin-bottom: 20px; */
     margin: 20px;
@@ -209,7 +244,6 @@ body {
 }
 
 .tableros .buscador {
-    display: block;
     margin: 0 auto;
     width: 60%;
     height: 35px;
@@ -222,16 +256,25 @@ body {
     text-align: center;
     width: 18.5%;
     height: 100%;
-    margin-right: -12px;
+    margin-right: -11px;
 }
 
 .tableros .buscador input {
     padding-left: 2px;
     outline: none;
-    width: 80%;
+    width: 58.9%;
     border: none;
     height: 92%;
     border-left: 1px solid #000;
+}
+
+.tableros .buscador button {
+    padding: none;
+    /* outline: none; */
+    width: 110.7px;
+    margin: 0%;
+    border: none;
+    height: 92%;
 }
 
 .bar .bars,
@@ -254,7 +297,9 @@ body {
 .bar.total .sub {
     display: inline;
     margin-left: 5px;
+    text-align: left;
     font-size: 20px;
+    width: 250px;
 }
 
 .bar.total button:hover .sub {
@@ -279,23 +324,31 @@ body {
 
 .bar.total .users .informacion {
     display: block;
-    /* background: #00ffbf; */
     text-align: center;
     float: right;
     width: 250px;
-    height: 50px;
     font-size: 2.5vh;
 }
-
-.bar.total .users .texto-generado {
-    bottom: 0;
-    left: 30px;
+.texto-generado{
+    margin-left: 5px;
+    border: none;
+    outline: none;
+    color: lime;
+    background: #000000;
+    display: block;
+    width: 97%;
+    line-height: 25px;
 }
-
-.bar.total .users .Modelo-user {
-    text-align: center;
+.texto-Gmail{
+    margin-left: 5px;
+    border: none;
+    outline: none;
+    color: lime;
+    background: #000000;
+    display: block;
+    width: 97%;
+    line-height: 25px;
 }
-
 .modal {
     z-index: 10;
     position: fixed;
@@ -315,7 +368,7 @@ body {
 .modal::-webkit-scrollbar-thumb{
     background: #000;
 }
-.modal  
+
 #modal {
     height: 560px;
 }
@@ -366,7 +419,7 @@ body {
     display: none;
 }
 
-#modal,#controlador_almacenador .close {
+#modal .close,#controlador_almacenador .close {
     color: red;
     position: absolute;
     top: 0;
@@ -401,7 +454,7 @@ body {
     text-decoration: none;
     /* color: #ffffff; */
     display: block;
-    width: 90%;
+    width: 100%;
 }
 
 .conternedora img {
@@ -459,8 +512,8 @@ body {
     cursor: pointer;
     z-index: 10;
     text-align: center;
-    top: 0;
-    right: 10px;
+    top: 1%;
+    right: 3%;
     width: 125px;
     border-radius: 1000px;
     line-height: 40px;
@@ -473,7 +526,7 @@ body {
     z-index: 10;
     position: fixed;
     top: 1%;
-    right: 1%;
+    right: 2.5%;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -611,4 +664,69 @@ body {
     background: #000;
     z-index: 1;
     border-radius:   0px 0px 30px;
+}
+
+
+  
+.hidden {
+    display: none;
+}
+
+@media screen and (max-height: 600px) {
+    .tableros .buscador {
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 60%;
+        height: 35px;
+        top: 30px;
+        /* border: 2px solid #9b9b9b; */
+    }
+}
+
+@media screen and (max-height: 580px) {
+    .tableros .buscador {
+        margin: 0 auto;
+        margin-top: 50px;
+        width: 60%;
+        height: 35px;
+        /* border: 2px solid #9b9b9b; */
+    }
+}
+
+@media screen and (max-height: 546px) {
+    .tableros .buscador {
+        margin: 0 auto;
+        margin-top: 60px;
+        width: 60%;
+        height: 35px;
+        /* border: 2px solid #9b9b9b; */
+    }
+}
+@media screen and (max-height: 526px) {
+    .tableros .buscador {
+        margin: 0 auto;
+        margin-top: 110px;
+        width: 60%;
+        height: 35px;
+        /* border: 2px solid #9b9b9b; */
+    }
+}
+
+@media screen and (max-height: 448px) {
+    .tableros .buscador {
+        margin: 0 auto;
+        margin-top: 150px;
+        width: 60%;
+        height: 35px;
+        /* border: 2px solid #9b9b9b; */
+    }
+}
+@media screen and (max-height:  363px) {
+    .tableros .buscador {
+        margin: 0 auto;
+        margin-top: 180px;
+        width: 60%;
+        height: 35px;
+        /* border: 2px solid #9b9b9b; */
+    }
 }
