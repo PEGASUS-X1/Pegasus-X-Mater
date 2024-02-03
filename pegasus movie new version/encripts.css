@@ -1,0 +1,100 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.tabablero{
+    width: 1000px;
+    height: 400px;
+    border: 1px solid #000;
+    margin: 0 auto;
+    margin-top: 20px;
+    text-align: center;
+    justify-content: center;
+}
+.chat-emcript{
+    border: 1px solid #000;
+    width: 500px;
+    height: 100%;
+    float: left;
+    position: relative;
+}
+.chat-emcript select{
+    padding: 5px 20px;
+    right: 0px;
+    top: 0px;
+    position: absolute;
+}
+
+.enviar-codi{
+    width: 80%;
+    height: 30px;
+    /* border: 1px solid #000; */
+    max-width: 100%;
+    position: absolute;
+    bottom: 10px;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+.mensaje{
+    height: 85%;
+    width: 75%;
+}
+.enviar{
+    height: 100%;
+    width: 20%;
+    float: right;
+    text-decoration: none;
+    border: none;
+    background: #003cff;
+    color: #fff;
+}
+.informes{
+    text-align: left;
+    width: 498px;
+    float: right;
+    height: 100%;
+}
+.ejecucion-modos::-webkit-scrollbar{
+    width: 10px;
+    background: #000;
+    border-radius: 1000px;
+}
+.ejecucion-modos::-webkit-scrollbar-thumb{
+    background: #2bff00;
+    border-radius: 1000px;
+}
+.ejecucion-modos{
+    max-width: 100%;
+    overflow: auto;
+    height: 50%;
+    border: 1px solid #750000;
+    background: #000;
+}
+.ejecucion-modos li{
+    color:  #2bff00;
+    margin-top: 10px;
+    padding-left: 10px;
+}
+
+.errores::-webkit-scrollbar{
+    width: 10px;
+    background: #000;
+    border-radius: 1000px;
+}
+.errores::-webkit-scrollbar-thumb{
+    background: #2bff00;
+    border-radius: 1000px;
+}
+
+.errores{
+    max-width: 100%;
+    overflow: auto;
+    height: 50%;
+    border: 1px solid #750000;
+    background: #000;
+}
+.errores li{
+    padding-top: 2px;
+    color:  #ff0000;
+    padding-left: 10px;
+}

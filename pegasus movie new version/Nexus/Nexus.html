@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Mega Menu</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" type="text/css" href="../assets/css/Nexus.css">
+		<!-- <link rel="stylesheet" href="./css/pedidos.css"> -->
+		<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+	<link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+	<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+	<link rel="stylesheet" href="../assets/css/cartas.css">
+	<link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
+	</head>
+	
+	<body>
+	 <!-- header start -->
+	 <header class="header">
+		 <div class="container">
+			 <div class="row v-center">
+				 <div class="header-item item-left">
+					 <div class="logo">
+						 <span><img src="./pegasus.png" alt=""></span>
+					 </div>
+				 </div>
+				 <!-- menu start here -->
+				 <div class="header-item item-center">
+					 <div class="menu-overlay">
+					 </div>
+					 <nav class="menu">
+						 <div class="mobile-menu-head">
+							 <div class="go-back" style="color: #fff;"><i class="fa fa-angle-left"></i></div>
+							 <div class="current-menu-title"></div>
+							 <div class="mobile-menu-close">&times;</div>
+						 </div>
+						 <ul class="menu-main">
+							 <li>
+								 <a href="#" class="tab-button active" data-tab="tab1">Home</a>
+							 </li>
+							 <!-- <li>
+								<a href="#" onclick="CajaDePedidos()">Pedidos</a>
+							 </li> -->
+							 <li class="menu-item-has-children">
+								 <a href="#">New <i class="fa fa-angle-down"></i></a>
+								 <div class="sub-menu mega-menu mega-menu-column-4">
+									<div class="list-item text-center">
+										<a href="./generador-codigos.html">
+										<img src="./MHA.jpg" alt="new Product">
+										<h4 class="title">Nueva Temporada</h4>
+										</a>
+									</div>
+	
+									 <div class="list-item text-center">
+										 <a href="./buscador-grupos.html">
+										 <img src="./AOT movie.jpg" alt="new Product">
+										 <h4 class="title">Nueva Temporada</h4>
+										 </a>
+									 </div>
+									 <div class="list-item text-center">
+										 <a href="./registro-grupos.html">
+										 <img src="./future diary.jpg" alt="new Product">
+										 <h4 class="title">Nueva Temporada</h4>
+										 </a>
+									 </div>
+									 <div class="list-item text-center">
+										 <a href="#">
+										 <img src="./MHA.jpg" alt="new Product">
+										 <h4 class="title">Nueva Temporada</h4>
+										</a>
+									 </div>
+								 </div>
+							 </li>
+							 <li class="menu-item-has-children">
+                                <a href="#">Generos <i class="fas fa-angle-down"></i></a>
+                                <div class="sub-menu single-column-menu">
+                                    <ul>
+										
+										<li><a href="./Series/Series.html" >Anime</a></li>
+										<li><a href="./Peliculas/Peliculas.html">Peliculas</a></li>
+                                        <!-- <li><a href="#">Acción</a></li>
+                                        <li><a href="#">Animación</a></li>
+                                        <li><a href="#">Aventura</a></li>
+                                        <li><a href="#">Bélica</a></li>
+                                        <li><a href="#">Ciencia Ficción</a></li>
+                                        <li><a href="#">Comedia</a></li>
+                                        <li><a href="#">Crimen</a></li>
+                                        <li><a href="#">Documental</a></li>
+                                        <li><a href="#">Drama</a></li>
+                                        <li><a href="#">Fantasía</a></li>
+                                        <li><a href="#">Familia</a></li>
+                                        <li><a href="#">Guerra</a></li>
+                                        <li><a href="#">Historia</a></li>
+                                        <li><a href="#">Romance</a></li>
+                                        <li><a href="#">Suspenso</a></li>
+                                        <li><a href="#">Terror</a></li>
+                                        <li><a href="#">Western</a></li>
+                                        <li><a href="#">Misterio</a></li> -->
+                                    </ul>
+                                </div>
+                            </li>
+							 <li class="menu-item-has-children">
+								 <a href="#">Pages <i class="fas fa-angle-down"></i></a>
+								 <div class="sub-menu single-column-menu">
+									 <ul>
+										 <li><a href="#">Login</a></li>
+										 <li><a href="#">Register</a></li>
+										 <li class="tab-button" data-tab="tab6"><a href="#">Preguntas Frecuentes</a></li>
+										 <li><a href="#">404 Page</a></li>
+									 </ul>
+								 </div>
+							 </li>
+							 <li>
+								 <a href="#">Contact</a>
+							 </li>
+						 </ul>
+					 </nav>
+				 </div>
+				 <!-- menu end here -->
+				 <div class="header-item item-right icons">
+					 <span href="#" id="search-btn"><i class="fas fa-search" ></i></span>
+					 <span href="#"><i class="far fa-heart"></i></span>
+					 <span href="#" id="cart-btn"><i class="fas fa-shopping-cart"></i></span>
+					 <!-- mobile menu trigger -->
+					 <div class="mobile-menu-trigger">
+						 <span></span>
+					 </div>
+				 </div>
+			 </div>
+		 </div>
+		 <div class="search-form">
+			<input type="search" id="search-box" placeholder="search here...">
+			<label for="search-box" class="fas fa-search"></label>
+		</div>
+	 </header>
+	
+	
+	 <!-- header end -->
+	
+	 <!-- banner start -->
+	 <div class="cover">
+		<div class="black-bg"></div>
+	  <div id="backgroundContainer" class="containerr" style=' background:  url("./assets/img/pxfuel.jpg") left no-repeat;         background-repeat: no-repeat; background-size: cover; background-position: center ;'>
+		<!-- <img class="logo-fondo" width="900px" src="./assets/img/logo-sin.bordes.png" alt=""> -->
+		<h1 class="name neon2">Nexus</h1>
+		<!-- <h1>Genuis</h1> -->
+		<!-- <p>LOS GENIOS NO NACEN, GENIUS LOS HACE</p> -->
+	  </div>
+	  </div>
+	 <!-- banner end -->
+
+		<div class="tab-content" id="tab1">
+			<section class="about" id="about">
+	
+				<h1 class="heading"> <span>Sobre Nosotros</span></h1>
+			
+				<div class="row">
+			
+					<div class="image">
+						<img src="../Captura.PNG" alt="">
+					</div>
+			
+					<div class="content">
+						<h3>Quienes somos?</h3>
+						<p>¡Bienvenidos a Nexus! tu mejor opción para ver tus películas favoritas sin publicidad, y completamente Gratis! Tenemos un diseño moderno y sencillo para que nuestros usuarios puedan moverse con mucha facilidad en nuestra interfaz web. Podrá acceder al sitio web desde cualquier dispositivo, ya sea una computadora, un celular o una tableta, y disfrutar de tus películas favoritas con facilidad.!</p>
+						<div class="cnt-btns">
+							<span class="btn" onclick="planaDocente()" id="play-presentacion">leer</span>
+						</div>
+					</div>
+			
+				</div>
+			
+			</section>
+		</div>
+
+
+	
+	<script>
+
+		
+		document.addEventListener("DOMContentLoaded", function () {
+			const tabButtons = document.querySelectorAll(".tab-button");
+			const tabContents = document.querySelectorAll(".tab-content");
+		
+			tabButtons.forEach((button) => {
+				button.addEventListener("click", () => {
+					// Desactiva todos los botones y oculta todos los contenidos
+					tabButtons.forEach((btn) => btn.classList.remove("active"));
+					tabContents.forEach((content) => content.classList.remove("active"));
+		
+					// Activa el botón clickeado y muestra el contenido correspondiente
+					const tabId = button.getAttribute("data-tab");
+					button.classList.add("active");
+					document.getElementById(tabId).classList.add("active");
+				});
+			});
+		
+			// Establece la pestaña 1 como activa por defecto
+			tabButtons[0].click();
+		});
+		
+		var audio = new Audio('presentacion.mp3'); // Reemplaza 'url_del_sonido.mp3' con la URL de tu archivo de sonido.
+		var reproduciendo = false; // Bandera para rastrear si el audio está en reproducción.
+	
+		function planaDocente() {
+		  if (!reproduciendo) { // Verificar si el audio no está en reproducción.
+			audio.play(); // Iniciar la reproducción.
+			reproduciendo = true; // Establecer la bandera en verdadero.
+		
+			audio.addEventListener('ended', function() {
+			  reproduciendo = false; // Restablecer la bandera cuando termine la reproducción.
+			});
+		  }
+		}
+	
+	</script>
+	<script src="../assets/js/Nexus.js"></script>
+	<script src="../assets/js/cartas.js"></script>
+</body>
+</html>

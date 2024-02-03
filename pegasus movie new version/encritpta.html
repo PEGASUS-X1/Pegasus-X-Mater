@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./encripts.css">
+</head>
+<body>
+    <div class="tabablero">
+        <div class="chat-emcript">
+            <select name="" id="encript" class="encript">
+                <option value="" selected disabled>selecciona modo</option>
+                <option value="Encriptar">Encriptar</option>
+                <option value="Desencriptar">Desencriptar</option>
+            </select>
+            <div class="chat" id="chat"></div>
+            <div class="enviar-codi">
+                <input type="text" class="mensaje" id="mensaje" placeholder="escribe un texto">
+                <button id="enviar" class="enviar">enviar</button>
+            </div>
+        </div>
+        <div class="informes">
+            <div class="ejecucion-modos">
+                <ul id="historial"></ul>
+            </div>
+            <div class="errores">
+                <li>a</li>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const encriptSelect = document.getElementById("encript");
+        const historial = document.getElementById("historial");
+        const chat = document.getElementById("chat");
+        const abecedario = {
+            'a': '1-',
+            'b': '!',
+            'c': '2$',
+            'd': '@',
+            'e': '3/',
+            'f': '#',
+            'g': '4*',
+            'h': '$',
+            'i': '5¡',
+            'j': '%',
+            'k': '6?',
+            'l': '^',
+            'm': '7[',
+            'n': '&',
+            'o': '8]',
+            'p': '*',
+            'q': '=?9',
+            'r': '(',
+            's': '0)=?[',
+            't': '|',
+            'u': '-',
+            'v': '?',
+            'w': '¡',
+            'x': '¿',
+            'y': '>',
+            'z': '+'
+        };
+
+        encriptSelect.addEventListener("change", function () {
+            const opcionSeleccionada = encriptSelect.value;
+            // Agregar la selección actual al historial
+            const historialItem = document.createElement("li");
+            historialItem.textContent = `Se cambió al Modo ${opcionSeleccionada}`;
+            historial.appendChild(historialItem);
+        });
+
+        function encriptarMensaje(mensaje) {
+            return mensaje.split('').map(char => abecedario[char] || char).join('');
+        }
+
+        function desencriptarMensaje(mensaje) {
+            const reversedAbecedario = {};
+            for (const key in abecedario) {
+                reversedAbecedario[abecedario[key]] = key;
+            }
+            return mensaje.split('').map(char => reversedAbecedario[char] || char).join('');
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            document.getElementById("enviar").addEventListener("click", function() {
+                const mensajeInput = document.getElementById("mensaje");
+                const encriptSelect = document.getElementById("encript");
+
+                const mensaje = mensajeInput.value;
+                const modo = encriptSelect.value;
+
+                if (modo === "Desencriptar") {
+                    // Desencriptar el mensaje
+                    const mensajeDesencriptado = desencriptarMensaje(mensaje);
+                    
+                    // Mostrar el mensaje desencriptado
+                    const mensajeDesencriptadoElement = document.createElement("p");
+                    mensajeDesencriptadoElement.textContent = mensajeDesencriptado;
+                    chat.appendChild(mensajeDesencriptadoElement);
+                } else {
+                    // Encriptar el mensaje
+                    const mensajeEncriptado = encriptarMensaje(mensaje);
+                    
+                    // Mostrar el mensaje encriptado
+                    const mensajeEncriptadoElement = document.createElement("p");
+                    mensajeEncriptadoElement.textContent = mensajeEncriptado;
+                    chat.appendChild(mensajeEncriptadoElement);
+                }
+
+                // Limpiar el campo de texto
+                mensajeInput.value = "";
+            });
+        });
+    </script>
+</body>
+</html>

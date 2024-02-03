@@ -1,0 +1,319 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&family=Rubik+Glitch&display=swap');
+
+*{
+	margin:0;
+	box-sizing: border-box;
+}
+
+body{
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: 1;
+}
+::-webkit-scrollbar{
+    display: none;
+    width: 10px;
+    background: #000;
+}
+::-webkit-scrollbar-thumb{
+    background: linear-gradient(45deg, rgba(77,0,0,1) 0%, rgba(255,0,0,1) 50%, rgba(38,0,0,1) 100%);
+}
+video, img{
+    max-width: 100%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+a{
+    text-decoration: none;
+}
+.X{
+    color: red;
+    font-size: 50px;
+    font-weight: 900;
+    position: absolute;
+    top: 0;
+    right: 1%;
+}
+.conver{
+    position: fixed;
+    top: 0;
+    background: url(/img/index.jpg) no-repeat right;
+    background-size: cover;
+    width: 100%;
+    height: 100vh;
+}
+
+.contenedor{
+    box-sizing: border-box;
+    max-width: 100%;
+    z-index: 1;
+    position: relative;
+    color: #fff;
+    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border-radius: 15px;
+    width: 700px;
+    background: #0000009a;
+    padding: 20px;
+}
+
+
+.neon{
+    color: #f3f3f3;
+    text-shadow: 0 0 5px red, 0 0 15px red, 0 0 30px red;
+    font-family: 'Rubik Glitch', cursive;
+    text-align: center;
+    margin-top: 10px;
+    margin-bottom: 20px;
+}
+#titulo1{
+    font-size: 7vh;
+}
+.info{
+    margin-top: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.buscador{
+    margin: 0 auto;
+    max-width: 100%;
+    width: 70%;
+    background: #fff;
+    height: auto;
+    height: 40px;
+    color: #000;
+    border-radius: 1000px;
+    position: relative;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.buscador i{
+    position: absolute;
+    top: 27%;
+    left: 5%;
+}
+.buscador span{
+    position: absolute;
+    padding: 10px 10px;
+    top: 0%;
+    right: 0%;
+    border-radius: 0px 1000px 1000px 0px;
+    border: 1px solid #fff;
+}
+.lectro{
+    z-index: 2;
+    cursor: pointer;
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    border-radius: 1000px;
+    padding: 17px 20px;
+    background: linear-gradient(45deg, rgba(77,0,0,1) 0%, rgba(255,0,0,1) 50%, rgba(38,0,0,1) 100%);
+}
+.btn{
+    /* right: 20px; */
+    font-size: 16px;
+    font-weight: 400;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    background: rgb(77,0,0);
+    background: linear-gradient(45deg, rgba(77,0,0,1) 0%, rgba(255,0,0,1) 50%, rgba(38,0,0,1) 100%);
+    /* background-color: #991010; */
+    cursor: pointer;
+}
+.btn:active{
+    transform:  scale(1);
+}  
+footer{
+    margin-top: 30px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+/* .social-box */
+
+.social-box {
+    display: flex;
+    line-height: 40px;
+    justify-content: center;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    display: inline-block;
+
+    color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+}
+
+.social-icon i {
+    transition: 2s;
+    margin: 0 5px;
+    vertical-align: middle;
+    line-height: 40px;
+}
+
+.fa-facebook-f{
+    color: #001aff;
+    /* margin: 0 5px; */
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: #fff;
+}
+.fa-youtube{
+    background-color: #fff;
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #ff1e00;
+}
+
+.fa-facebook-f:hover{
+    background-color: #001aff;
+    color: #fff;
+}
+
+.fa-youtube:hover{
+    background-color: #ff1e00;
+    color: #fff;
+}
+.fa-tiktok:hover{
+    background-color: #000000;
+    color: #fff;
+}
+.fa-whatsapp:hover{
+    background-color: #15ff00;
+    color: #fff;
+}
+.fa-whatsapp{
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #15ff00;
+    background-color: #fff;
+}
+.fa-tiktok{
+    text-align: center;
+    line-height: 40px;
+    font-size: 20px;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    color: #000;
+    background-color: #fff;
+}
+@media screen and (max-width: 768px) {
+    .buscador{
+        margin: 0 auto;
+        max-width: 100%;
+        width: 100%;
+        background: #fff;
+        height: auto;
+        height: 40px;
+        color: #000;
+        border-radius: 1000px;
+        position: relative;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    #titulo1 {
+        font-size: 6vh;
+    }
+    .contenedor{
+        width: 95%;
+    }
+}
+@media screen and (max-width: 428px) {
+
+    #titulo1 {
+        font-size: 4vh;
+    }
+    .contenedor{
+        width: 97%;
+    }
+}
+
+
+
+/* acordeon */
+.PGX.ai_faq{
+    border: 1px solid #fff;
+    background-color: #3f0000;
+    margin-top: 1rem;
+    border-radius: .25rem;
+    color: #fff;
+}
+.PGX.ai_faq[open]{
+    background-color: #3f0000;
+}
+
+.PGX.ai_faq[open] 
+.ai_faq-title i:before{
+    content: "\f068";
+}
+
+.PGX.ai_faq-title{
+    text-align: center;
+    font-weight: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    gap:1rem;
+    align-items: center;
+    padding: 1rem;
+    /* font-size: 20px;   */
+}
+
+.PGX.ai_faq-title p{
+    font-weight: 0;
+    font-size: 20px;  
+    flex:1;
+    margin: 0;
+    color: #fff;
+}
+
+.PGX a{
+    font-weight: 0;
+    font-size: 15px;  
+    flex:1;
+    margin: 0;
+    color: #fff;
+}
+
+.PGX.ai_faq-title i{
+    flex-shrink: 0;
+    width: 2rem;
+    height: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-self: start;
+}
+
+.PGX.ai_faq-title::marker{
+    content: '';
+}
+
+.PGX.ai_faq-box{
+    text-align: left;
+    padding: 0 1rem 1rem;
+    font-weight: 0;
+    font-size: 15px;  
+}
+
+.PGX.ai_faq-box p:last-child{
+margin-bottom: 0;
+}

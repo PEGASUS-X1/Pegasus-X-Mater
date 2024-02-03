@@ -1,0 +1,70 @@
+
+
+const listaAnime = [
+    {
+        nombre: "Los Simpsin 1x1",
+        url: "https://www.youtube.com/embed/TtKA6OzATbY?si=3qPT6-VpupVGVbOy",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    }
+]
+
+const videoPlayer = document.getElementById('videoPlayer');
+const videoList = document.getElementById('videoList');
+const tempCap = document.getElementById('temp-cap');
+const contador = document.getElementById('contador');
+let cartaICounter = 1;
+listaAnime.forEach(function(animeVideo) {
+const cartad = `cart-${cartaICounter}`;
+cartaICounter++;
+const li = document.createElement('li');
+li.textContent = animeVideo.nombre;
+videoList.appendChild(li);
+li.addEventListener('click', () => {
+tempCap.textContent = animeVideo.nombre;
+videoPlayer.src = animeVideo.url
+        });
+});
+contador.textContent = `Total de videos: ${listaAnime.length}`;

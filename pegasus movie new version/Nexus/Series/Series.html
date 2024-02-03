@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <!-- stilos -->
+    <link rel="stylesheet" href="../assets/css/cartas.css">
+    <link rel="stylesheet" href="../assets/css/barra.css">
+    <link rel="stylesheet" href="../assets/css/Reproductor.css">
+    <link rel="stylesheet" href="../assets/css/home.css">
+    <script>
+      var usuariosContrasenas = {
+        "Florentino": { password: "admin", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/fa/7c/2c/fa7c2c6165b5d219a8353a660f31b2f3.jpg" },
+        "admin": { password: "admin", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" },
+        "aa": { password: "aa", modelo: "💎 Premiun 💎", imagen: "https://i.pinimg.com/564x/d5/81/45/d58145ed8fded7ebed053677baeef49c.jpg" },
+        "Arquitecto Sandro": { password: "admin", mensaje: "Pago: te faltan 2 días", modelo: "Basico", imagen: "https://i.pinimg.com/564x/69/8b/3b/698b3b755ed139278036e55264a8e0da.jpg" },
+        "Usuario2": { password: "admin", modelo: "💎 Premiun 💎", imagen: "./1.jpg" }
+    };
+    
+    $(document).ready(function () {
+        var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+        var today = new Date().toLocaleDateString();
+    
+        if (lastSecurityCheckDate === today) {
+            showWelcomeMessage();
+        } else {
+            performSecurityCheck();
+        }
+    });
+    
+    function showWelcomeMessage() {
+        var username = localStorage.getItem('username');
+    
+        if (username) {
+            var saludo = "Hola, " + username + " Bienvenid@!";
+            document.getElementById("texto-generado").textContent = saludo;
+    
+            var TipoModelos = localStorage.getItem('TipoModelo');
+    
+            if (TipoModelos) {
+                var TipoModelo = document.getElementById("Modelo-user");
+                TipoModelo.textContent = TipoModelos;
+                
+                //if (TipoModelos === "💎 Premiun 💎") {
+                //    var passwordElement = document.getElementById("password");
+                //    passwordElement.style.display = "none";
+                //}
+            }
+    
+            var imagenUsuarioURL = localStorage.getItem('imagenUsuario');
+    
+            if (imagenUsuarioURL) {
+                var imagenUsuario = document.getElementById("img-user");
+                imagenUsuario.src = imagenUsuarioURL;
+                imagenUsuario.alt = "Imagen de Usuario";
+            }
+        } else {
+            performSecurityCheck();
+        }
+        hideLoader();
+    }
+      
+      function performSecurityCheck() {
+          var maxAttempts = 3;
+          var attempts = 0;
+          var isAvisoMostrado = false;
+          var controluno = false;
+          var controldos = false;
+      
+          function showLoader() {
+              $("#overlay").fadeIn();
+          }
+      
+          function hideLoader() {
+              $("#overlay").fadeOut();
+          }
+      
+          function guardarDatos(nombre) {
+            //var fechaHora = obtenerFechaHora();
+            //var url = "https://script.google.com/macros/s/AKfycby1aVTFUQOvTLePapUGtgR-nZ49jo_Z3NDJBQpbIFM_o0ucMMBzOlVXwcqHjqD--N27/exec";
+            //var data = {
+            //    nombre: nombre
+            //};
+      
+            //$.post(url, JSON.stringify(data), function (response) {
+            //    alert(response);
+            //});
+      
+              var lastReloadDate = localStorage.getItem('lastReloadDate');
+              var today = new Date().toLocaleDateString();
+      
+              if (lastReloadDate !== today) {
+                  setTimeout(function () {
+                      localStorage.setItem('lastReloadDate', today);
+                      window.location.reload();
+                  }, 5000);
+              }
+          }
+      
+          function obtenerFechaHora() {
+              var now = new Date();
+              var fecha = now.toLocaleDateString();
+              var hora = now.toLocaleTimeString();
+              return fecha + " " + hora;
+          }
+      
+          function checkNombre() {
+              if (attempts < maxAttempts) {
+                  if (!isAvisoMostrado) {
+                      alert("😋 ¡Hola! Es hora de acceder. 😋\n🤭 Si no tienes tus claves, accede a este\n🔗 link: 'pegasus-v2.tk/registro' 🔗 para obtener tu acceso. 😏\n\n☠️ ¡No te equivoques! ☠️");
+                      isAvisoMostrado = true;
+                  }
+      
+                  if (!controluno) {
+                      alert("Control De Seguridad 1");
+                      controluno = true;
+                  }
+      
+                  var username = prompt("Ingrese el nombre de seguridad");
+      
+                  if (usuariosContrasenas.hasOwnProperty(username)) {
+                      checkCodigo(username);
+                  } else {
+                      attempts++;
+                      alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                      checkNombre();
+                  }
+              } else {
+                  showLoader();
+                  setTimeout(hideLoader, 5000);
+                  window.location.href = "404.html";
+              }
+          }
+      
+          function checkCodigo(username) {
+            if (attempts < maxAttempts) {
+                if (!controldos) {
+                    alert("Control De Seguridad 2");
+                    controldos = true;
+                }
+        
+                var codigo = prompt("Ingrese la contraseña");
+        
+                if (usuariosContrasenas[username].password === codigo) {
+                    showLoader();
+                    setTimeout(function () {
+                        hideLoader();
+                        var saludo = "Hola, " + username + " Bienvenid@!";
+                        textoGenerado.textContent = saludo;
+      
+                        var TipoModelos = usuariosContrasenas[username].modelo;
+                        var TipoModelo = document.getElementById("Modelo-user");
+                        TipoModelo.textContent = TipoModelos;
+                        localStorage.setItem('TipoModelo', TipoModelos);
+      
+                        // Agregar imagen de usuario aquí
+                        var imagenUsuarioURL = usuariosContrasenas[username].imagen;
+                        var imagenUsuario = document.getElementById("img-user");
+                        imagenUsuario.src = imagenUsuarioURL;
+                        imagenUsuario.alt = "Imagen de Usuario";
+                        // document.getElementById("texto-generado").appendChild(imagenUsuario);
+      
+                        // Almacenar la URL de la imagen en el almacenamiento local
+                        localStorage.setItem('imagenUsuario', imagenUsuarioURL);
+        
+                        if (username === 'admin') {
+                            // Mostrar una alerta específica para el usuario 'admin'
+                            alert("¡Acceso de administrador!");
+                        } else {
+                            alert(" ✅ Acceso concedido ✅ ");
+                        }
+                        if (usuariosContrasenas[username].mensaje) {
+                          alert(usuariosContrasenas[username].mensaje);
+                      }
+      
+                        guardarDatos(username, imagenUsuarioURL, TipoModelos);
+        
+                        var today = new Date().toLocaleDateString();
+                        localStorage.setItem('lastSecurityCheckDate', today);
+        
+                        localStorage.setItem('username', username);
+                    }, 5000);
+                } else {
+                    attempts++;
+                    alert("Contraseña incorrecta. Intento " + attempts + " de " + maxAttempts);
+                    checkCodigo(username);
+                }
+            } else {
+                showLoader();
+                setTimeout(hideLoader, 5000);
+                window.location.href = "404.html";
+            }
+        }
+      
+          showLoader();
+          checkNombre();
+      }
+      
+      function showLoader() {
+          var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+          var today = new Date().toLocaleDateString();
+      
+          if (lastSecurityCheckDate !== today) {
+              $("#overlay").fadeIn();
+          }
+      }
+      
+      function hideLoader() {
+          $("#overlay").fadeOut();
+      }
+      
+      </script>
+</head>
+<body>
+
+ 
+    <div class="bar-client-cover" id="bar-client-cover">
+      <div class="cotenseb">
+        <span id="scrollButton"><i class="fas fa-arrow-down"></i></span>
+        <p class="Modelo-user" id="Modelo-user"></p>
+        <span class="close-bar-client-cover" id="close-bar-client-cover">&times;</span>
+      <div class="bar-client" id="bar-client">
+        <div class="bar-client-text">
+          <p class="alerta">☠️ <span class="username"></span> Si eres nuevo preciona el icono flotante de incotnita para saber todo el funcionamiento de la pagina para no tener problemas ☠️</p>
+    
+        <h1 id="texto-generado"></h1>
+        <img src="" id="img-user" alt="">
+        <br>
+        <br>
+        <p id="textodeanimo" class="textodeanimo"></p>
+        <br>
+
+        <div class="sugerencias">
+          <a href="./Calificacion.html" class="sugerencia">
+            <div class="sugerencia-contend">
+              <i class="fas fa-folder"></i>
+              <p>Estilos</p>
+            </div>
+          </a>
+          <div class="sugerencia">
+            <div class="sugerencia-contend">
+            <i class="fas fa-user-alt"></i>
+            <p>Profecionales</p>
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+    </div>
+    <div class="caja" id="caja">
+      <div class="caja-abierta" id="caja-abierta">
+        <span id="open-bar-client-cover">
+          <i class="fa fa-user"></i>
+        </span>
+        <span class="oopen" id="oopen">
+          <i class="fa fa-question"></i>
+        </span>
+        <span href="#" class="cart-btn" id="cart-btn" onclick="abrirModal()">
+          <i class="fas fa-list" ></i>
+        </span>
+      
+        <span id="PremiumCartBtn">
+          <i class='fas fa-comments'></i>
+        </span>
+      
+        <span class="ImgBtn" id="ImgBtn" >
+          <i class='fas fa-file-video'></i>
+        </span>
+
+
+      </div>
+      
+      </div>
+    <div class="desplegador-optioon" id="desplegador-option">
+      <span class="open-caja-2" id="open-caja-2">
+        <i class="fas fa-box"></i>
+      </span>
+    </div>
+    
+    <div class="desplegador-option" id="desplegador-optioon">
+      <span class="open-caja-1" id="open-caja">
+        <i class="fas fa-box-open"></i>
+      </span>
+    </div>
+
+    <div id="modal-img" class="modal">
+      <div class="modal-content">
+          <span class="close-img" id="close-img">&times;</span>
+  
+      <form  action="" id="data-form">
+          <div class="caja-pedidos">
+              <h1>Hola <span class="username"></span> Sugierenos Una Pelicula</h1>
+              <input type="text" id="Sugerencia" placeholder="Nombre De La Pelicula o describe" required>
+              <br>
+              <select name="" id="Categoriass" required>
+                  <option value="" disabled selected>Elija La Categoria</option>
+                  <option value="null">No se La categoria</option>         
+                  <option value="Acción">Acción</option>
+                  <option value="Animación">Animación</option>
+                  <option value="Aventura">Aventura</option>
+                  <option value="Bélica">Bélica</option>
+                  <option value="Ciencia Ficción">Ciencia Ficción</option>
+                  <option value="Comedia">Comedia</option>
+                  <option value="Crimen">Crimen</option>
+                  <option value="Documental">Documental</option>
+                  <option value="Drama">Drama</option>
+                  <option value="Fantasía">Fantasía</option>
+                  <option value="Familia">Familia</option>
+                  <option value="Guerra">Guerra</option>
+                  <option value="Historia">Historia</option>
+                  <option value="Romance">Romance</option>
+                  <option value="Suspenso">Suspenso</option>
+                  <option value="Terror">Terror</option>
+                  <option value="Western">Western</option>
+                  <option value="Misterio">Misterio</option>
+              </select>
+          </div>
+          <button class="btn" type="submit" >Registrar</button>
+
+      </form>
+  </div>
+  </div>
+
+      <div class="reproductor-total" id="reproductor-total" style="display: none;">
+        <div class="temp-cap" id="temp-cap"></div>
+        <iframe id="videoPlayer" src="" frameborder="0" controls allowfullscreen ></iframe>
+        <div class="contenedor-contador">
+            <p class="contador" id="contador"></p>
+        </div>
+        <div class="videoList" id="videoList">
+        </div>
+      </div>
+      <div class="modal" id="modal-ques">
+        <div class="modal-content">
+          <span class="closes">&times;</span>
+          <h1>Como usar</h1>
+          <div class="usar">
+            <h2>Primer tutorial: Como Registrarse</h2>
+            <iframe src="https://www.youtube.com/embed/Mtmh39K5h_Y?si=kgVmxS2lf6siyhW7" allowfullscreen frameborder="0"></iframe>
+          </div>
+          <div class="usar">
+            <h2>Segundo Tutorial: Como Realizar El Pedido</h2>
+            <iframe src="https://www.youtube.com/embed/L8iFZTTq-o4?si=IIqnIJtbrWDdNXxW" allowfullscreen frameborder="0"></iframe>
+          </div>
+        </div>
+        </div> 
+
+    <!-- <button onclick="abrirModal()">ver</button> -->
+    <div id="miModal" class="modall" >
+        <div class="modal-content">
+            <span class="close-button" onclick="cerrarModal()">&times;</span>
+            <div class="sistema-Busqueda">
+              <input type="search" name="" id="search-box">
+              <i class="fa fa-search"></i>
+
+            </div>
+            <section class="sistema-de-filtrado">  
+              
+                <div class="filtro">
+                  <label for="filtro-Genero">Genero:</label>
+                  <br>
+                  <select id="filtro-Genero">
+                    <option value="todos">Todos</option>
+                  </select>
+                </div>
+                
+                <div class="filtro">
+                  <label for="filtro-Duracion">Duracion:</label>
+                  <br>
+                  <select id="filtro-Duracion">
+                    <option value="todos">Todos</option>
+                  </select>
+                </div>
+                
+              
+              </section>
+            <div class="contenedor-anime"></div>
+        </div>
+    </div>
+    <!-- Hola -->
+    
+      <div id="notification-container"></div>
+      
+      <div id="modal-1" class="modal" style="text-align: center; justify-content: center;">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-1')">&times;</span>
+      <h2></h2>
+      <p></p>
+      <br>
+      <br>
+      <center>
+        <img id="image-1" src="" alt="">
+        <iframe id="iframe-1" src="" frameborder="0"></iframe>
+      </center>
+      
+      <br>
+      <br>
+      <a id="ver-1" class="btn red" target="_blank">Ver</a>
+      </div>
+      </div>
+      
+      <div id="modal-2" class="modal" style="text-align: center; justify-content: center;">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-2')">&times;</span>
+      
+      <h2></h2>
+      <p></p>
+      <br>
+      <br>
+      <center>
+      <img id="image-2" src="" alt="">
+      <iframe id="iframe-2" src="" frameborder="0"></iframe>
+      </center>
+      <br>
+      <br>
+      <a id="ver-2" class="btn red" target="_blank">Ver</a>
+      </div>
+      </div>
+      
+      <div id="modal-3" class="modal" style="text-align: center; justify-content: center;">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-3')">&times;</span>
+      <h2></h2>
+      <p></p>
+      <br>
+      <br>
+      <center>
+      <img id="image-3" src="" alt="">
+      <iframe id="iframe-3" src="" frameborder="0"></iframe>
+      </center>
+      <br>
+      <br>
+      <a id="ver-3" class="btn red" target="_blank">Ver</a>
+      </div>
+      </div>
+      
+      <div id="modal-4" class="modal" style="text-align: center; justify-content: center;">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal('modal-4')">&times;</span>
+      <h2></h2>
+      <p></p>
+      <br>
+      <br>
+      <center>
+      <img id="image-4" src="" alt="">
+      <iframe id="iframe-4" src="" frameborder="0"></iframe>
+      </center>
+      <br>
+      <br>
+      <a id="ver-4" class="btn red" target="_blank">Ver</a>
+      </div>
+      </div>
+
+    <!-- End hola -->
+    <!-- <button onclick="goToTop()" id="topBtn" title="Go to top of page">Tfop of Page</button> -->
+
+
+    <script>
+            // Función para abrir el modal
+    function abrirModal() {
+        document.getElementById("miModal").style.display = "block";
+    }
+
+    // Función para cerrar el modal
+    function cerrarModal() {
+        document.getElementById("miModal").style.display = "none";
+    }
+
+    </script>
+    
+    <script>
+      // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        if (document.body.scrollTop > 4 || document.documentElement.scrollTop > 4) {
+            document.getElementById("topBtn").style.display = "block";
+        } else {
+            document.getElementById("topBtn").style.display = "none";
+        }
+    }
+
+    // When the user clicks on the button, scroll to the top of the document
+    function goToTop() {
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollottom = 0; // For Chrome, Firefox, IE and Opera
+    }
+    </script>
+    <!-- <script>
+      const listaAnime = [
+    {
+        nombre: "Los Simpsin 1x1",
+        url: "https://www.youtube.com/embed/TtKA6OzATbY?si=3qPT6-VpupVGVbOy",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    },
+    {
+        nombre: "Los Simpsin 1x2",
+        url: "https://www.blogger.com/video.g?token=AD6v5dwfgZpz_jqUhUKiu3QRnCC-HHqFh9LfA5ULsY9A3YnxkL_21IY7se_11w3xS4yqic0dFPu0NsvOj9xkYgfxxN3n1l0rsBVLVzTGaIpAPFS-oin6WaCxbbHCaY8buX6ub_XPE74W",
+    }
+]
+    </script> -->
+    <!-- https://smartthingsfind.samsung.com/ -->
+    <!-- scripts -->
+    <script src="../assets/js/home.js"></script>
+    <script src="../assets/js/series.js"></script>
+    <script src="../assets/js/barra.js"></script>
+    <!-- <script>
+
+      const videoPlayer = document.getElementById('videoPlayer');
+      const videoList = document.getElementById('videoList');
+      const tempCap = document.getElementById('temp-cap');
+      const contador = document.getElementById('contador');
+      let cartaICounter = 1;
+      listaAnime.forEach(function(animeVideo) {
+  const cartad = `cart-${cartaICounter}`;
+  cartaICounter++;
+  const li = document.createElement('li');
+  li.textContent = animeVideo.nombre;
+  videoList.appendChild(li);
+  li.addEventListener('click', () => {
+      tempCap.textContent = animeVideo.nombre;
+      videoPlayer.src = animeVideo.url
+              });
+});
+contador.textContent = `Total de videos: ${listaAnime.length}`;
+
+  </script> -->
+  <script>
+    var usernameElements = document.querySelectorAll(".username");
+
+    usernameElements.forEach(function(element) {
+      element.textContent = localStorage.getItem('username');
+    });
+    var textoGenerado = document.getElementById("texto-generado");
+  </script>
+</body>
+</html>

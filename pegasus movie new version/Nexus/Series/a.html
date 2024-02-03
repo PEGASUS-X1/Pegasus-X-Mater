@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Cambio de Script Externo con Botones</title>
+</head>
+<body>
+  <div id="botonesContainer">
+    <!-- Aquí se agregarán los botones creados por JS -->
+  </div>
+  <div id="scriptContainer">
+    <!-- Aquí se cargará y ejecutará el script externo -->
+  </div>
+  <h1>Videos de Anime</h1>
+  <ul id="videoList"></ul>
+  <p id="temp-cap">Selecciona un video</p>
+  <iframe id="videoPlayer" width="560" height="315" src="" frameborder="0" allowfullscreen></iframe>
+  <p id="contador">Total de videos: 0</p>
+
+  <script>
+    var botonesContainer = document.getElementById("botonesContainer");
+    var scriptContainer = document.getElementById("scriptContainer");
+
+    function crearBoton(texto, scriptURL) {
+      var boton = document.createElement("button");
+      boton.textContent = texto;
+      boton.addEventListener("click", function() {
+        cargarScript(scriptURL);
+      });
+      botonesContainer.appendChild(boton);
+    }
+
+    function cargarScript(url) {
+      var script = document.createElement('script');
+      script.src = url;
+      scriptContainer.innerHTML = ''; // Limpiar el contenedor
+      scriptContainer.appendChild(script);
+    }
+
+    // Crear botones y asignar funciones al hacer clic
+    crearBoton("Cargar Script 1", "a.js");
+    crearBoton("Cargar Script 2", "b.js");
+  </script>
+</body>
+</html>
