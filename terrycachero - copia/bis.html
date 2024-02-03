@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/pipipi.css">
+</head>
+<body style="
+background: url(./aea.jpg) center fixed;     
+background-size: cover;
+background-repeat: no-repeat;">
+    <div class="registro" style="border: 1px solid #00ffea;">
+        <form action="" id="data-form">
+            <h3 style="font-size: 40px;">Biscochuelo</h3>
+            <br>
+            <p style="font-size: 30px;">Precio: <span id="preciodemata">25</span> batida</p>
+            <br>
+            <select name="" id="pan-o-visco" class="pan-o-visco">
+                <!-- <option value="" selected disabled>selecione el pedido</option> -->
+                <option value="Biscochuelo" selected disabled>Biscochuelo</option>
+            </select>
+
+            <p class="separedor">Nombre:</p>
+            <input id="Nombre" type="text" placeholder="escribe el nombre:" required>
+            
+            <p class="separedor">Numero:</p>
+            <input id="Numero" type="text" placeholder="escribe el nombre:" required  onchange="calcular()">
+
+            <p class="separedor" >Precio total:</p>
+            <input id="Precio"  type="text" placeholder="escribe el nombre:" readonly>
+            <h1 class="btn-cal" onclick="calcular()">Sacar precio</h1>
+            <br>
+            <br>
+            <button class="btn" type="submit" >Registrar</button>
+
+        </form>
+    </div>
+    <script>
+        function calcular() {
+            var numeror = document.getElementById("Numero").value;
+            var Precioo = document.getElementById("Precio");
+
+            Precioo.value = numeror * 25;
+        }
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const form = document.getElementById("data-form");
+        
+            form.addEventListener("submit", function (e) {
+              e.preventDefault();
+        
+              const Selec = document.getElementById("pan-o-visco").value;
+              const Nombre = document.getElementById("Nombre").value;
+              const Numero = document.getElementById("Numero").value;
+              const Precio = document.getElementById("Precio").value;
+        
+              const formData = {
+                Selec: Selec,
+                Nombre: Nombre,
+                Numero: Numero + " VATIDO",
+                Precio: Precio,
+              };
+        
+              fetch("https://script.google.com/macros/s/AKfycbziwKOafCM12z6N-tIhENuUD3hZAuxzjJFEqKIzEMFq_4gc-JZDOer2QYkhFk8KVgq9/exec", {
+                method: "POST",
+                body: JSON.stringify(formData),
+              })
+                .then(response => response.text())
+                .then(data => {
+                  console.log(data);
+                  alert("Registrado");
+                })
+                .catch(error => {
+                  console.error("Error:", error);
+                  alert("Hubo un error en los datos");
+                });
+            });
+          });
+        
+    </script>
+</body>
+</html>

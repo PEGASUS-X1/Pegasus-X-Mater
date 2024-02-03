@@ -1,0 +1,248 @@
+body{ 
+    padding: 0;
+    margin: 0;
+    /* margin: 30px; */
+}
+html{
+    font-size: 2vh;
+}
+.info{
+    border: 1px solid #000;
+}
+.profesor-clases {
+    border: 1px solid #000;
+}
+
+.iformacion-clase {
+    border: 1px solid #000;
+}
+
+.reproductor-clases{
+    padding: 10px;
+    /* border: 1px solid #000; */
+}
+.info {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+
+.profesor-clases {
+    text-align: center;
+  float: right;
+  width: calc(50% - 10px); 
+  padding: 10px;
+  box-sizing: border-box;
+}
+.profesor-img{
+    width: 80%;
+    height: 400px;
+}
+.iformacion-clase {
+    position: relative;
+    text-align: center;
+  float: left;
+  width: calc(50% - 10px);
+  padding: 10px;
+  box-sizing: border-box;
+}
+.fecha-clase{
+    color: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    background: #0011ff;
+    padding: 5px 15px 5px 15px;
+}
+.fechas-x {
+    top: 0;
+    left: 0;
+    position: absolute;
+    background: #0011ff;
+    padding: 5px 15px;
+    color: #fff;
+    /* font-size: 12px; */
+}
+.chat{
+    padding: 30px;
+}
+.filtro-shar{
+    display: none;
+}
+.search-container {
+    width: 50%;
+    margin-top: 10px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}
+.search-container:hover .fa-search {
+    transform: rotate(45deg);
+    border: 2px solid #7e0000;
+    color: #7e0000;
+  }
+.search-container:hover{
+    border: 2px solid #7e0000;
+}
+#searchInput:hover{
+    color: #7e0000;
+}
+#searchInput {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    outline: none;
+  }
+
+  .fa-search {
+    margin-right: 10px;
+    font-size: 18px;
+    color: #999;
+  }
+iframe{
+    max-width: 100%;
+    width: 100%;
+    height: 650px;
+    box-sizing: border-box;
+}
+
+
+::-webkit-scrollbar{
+    width: 0px;
+}
+
+.url-libros{
+    max-width: 100%;
+    z-index: 2;
+    display: none;
+    color: #fff;
+    right: 0;
+    /* width: 350px; */
+    width: 38%;
+    background: #000;
+    height: 100vh;
+    position: fixed;
+}
+.open-libros{
+    max-width: 100%;
+    cursor: pointer;
+    color: #fff;
+    position: fixed;
+    font-size: 30px;
+    padding: 0px 30px 0px 10px;
+    background: #000;
+    border-radius: 1000px;
+    top: 50%;
+    right: -20px;
+}
+.close-libros{
+    max-width: 100%;
+    border: 1px solid #fff;
+    cursor: pointer;
+    color: #fff;
+    position: fixed;
+    font-size: 30px;
+    padding: 0px 30px 0px 10px;
+    background: #000;
+    border-radius: 1000px;
+    top: 50%;
+    right: 320px;
+}
+.cotenedor-libros{
+    padding: 10px;
+    overflow: auto;
+    height: 100vh;
+    max-width: 100%;
+}
+.op{
+    display: block;
+}
+.cartas-url {
+    border: 1px solid #ccc;
+    width: 100%;
+    /* height: auto; */
+    margin-bottom: 20px;
+    padding: 10px;
+    text-align: center;
+    box-sizing: border-box;
+}
+  
+  .cartas-url img {
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+
+  .btn-ñ{
+    color: #fff;
+    border: 1px solid #fff;
+    text-decoration: none;
+    padding: 10px 30px 10px 30px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-around;
+    position: static;
+}
+
+  .cartas-url-conten {
+    margin: 20px 0;
+  }
+@media screen and (max-width: 600px) {
+    .info {
+      flex-direction: column; 
+    }
+  
+    .profesor-clases, .iformacion-clase {
+      float: none;
+      width: 100%; 
+      margin: 0; 
+      padding: 5px;
+    }
+
+    .chat{
+        padding: 10px;
+    }
+
+    .reproductor-clases{
+        padding: 1px;
+    }
+
+/*    iframe{
+        max-width: 100%;
+        width: 100%;
+        height: 300px;
+        box-sizing: border-box;
+    }  */
+    iframe{
+        max-width: 100%;
+        width: 100%;
+        height: 200px;
+        box-sizing: border-box;
+    }
+    .profesor-img{
+        width: 80%;
+        height: 350px;
+    }
+    .search-container {
+    width: 90%;
+}
+
+.close-libros{
+    max-width: 100%;
+    border: 1px solid #fff;
+    cursor: pointer;
+    color: #fff;
+    position: fixed;
+    font-size: 30px;
+    padding: 0px 30px 0px 10px;
+    background: #000;
+    border-radius: 1000px;
+    top: 50%;
+    right: -20px;
+}
+}

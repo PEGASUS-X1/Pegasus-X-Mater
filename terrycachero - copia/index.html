@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/css.css">
+    <link rel="stylesheet" href="./assets/css/Pegasus_X.css">
+    <!--! ✝ ======= 🐉 ╟ Icons ╢ 🐉 ======= ✝ -->
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+        <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!--! ✝ ======= 🐉 ╟ Icons ╢ 🐉 ======= ✝ -->
+</head>
+<body>
+    <div id="overlay">
+        <div class="loader-circle"></div>
+        <div id="loading-text">Cargando...</div>
+        <div class="personal-information">
+            <input type="text" id="cual-nombre" placeholder="Cual Es Tu Nombre?" onkeypress="handleKeyPress(event)">
+            <br>
+            <button onclick="guardarNombre()">Guardar Nombre</button>
+        </div>
+        <br>
+    </div>
+    <div class="controladores">
+        <button id="refresh" class="refresh"><i class="fas fa-sync-alt"></i></button>
+        <button id="Exit" class="Exit"> Salir <i class="fa fa-sign-out-alt"></i> </button>
+    </div>
+    <div class="mp">
+        <h1 id="tipo_sistema"></h1>
+        <h1 id="texto-generado"></h1>
+        <div class="btns">
+            <button id="activar_Primaria">Primaria</button>
+            <button  id="activar_Segundaria">Segundaria</button>
+        </div>
+    <div class="Primaria" id="Primaria">
+        <span>1</span>
+        <form action="" id="Primaria_data">
+            <input type="text" id="Nombre_Tutor_Padre_primaria" placeholder="Ingrese el nombre del padre o tutor">
+            <select name="" id="grado_primaria" >
+                <option value="" selected disabled>Selecione El Grado</option>
+                <option value="1ro">1ro</option>
+                <option value="2do">2do</option>
+                <option value="3ro">3ro</option>
+                <option value="4to">4to</option>
+                <option value="5to">5to</option>
+                <option value="6to">6to</option>
+            </select>
+            <select name="" id="Seccion_primaria">
+                <option value="" selected disabled>Selecione La Seccion</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+            </select>
+            <input type="text" id="targeta_apafa_Primaria" placeholder="N° de la targeta">
+            <button type="submit"  >Enviar</button>
+        </form>
+    </div>
+
+    <div class="Segundaria" id="Segundaria">
+        <span>2</span>
+        <form action="" id="Segundaria_data">
+            <input type="text" id="Nombre_Tutor_Padre_Segundaria" placeholder="Ingrese el nombre del padre o tutor">
+            <select name="" id="grado_Segundaria" >
+                <option value="" selected disabled>Selecione El Grado</option>
+                <option value="1ro">1ro</option>
+                <option value="2do">2do</option>
+                <option value="3ro">3ro</option>
+                <option value="4to">4to</option>
+                <option value="5to">5to</option>
+            </select>
+            <select name="" id="Seccion_Segundaria">
+                <option value="" selected disabled>Selecione La Seccion</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+                <option value="H">H</option>
+                <option value="I">I</option>
+                <option value="J">J</option>
+                <option value="K">K</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+                <option value="N">N</option>
+            </select>
+            <input type="text" id="targeta_apafa_Segundaria" placeholder="N° de la targeta">
+            <button type="submit"  >Enviar</button>
+
+        </form>
+    </div>
+    </div>
+    <span id="logo">Made By: Pegasus X(Joseph)</span>
+    <script src="./assets/js/pegasus_X.js"></script>
+    <script src="./assets/js/js.js"></script>
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

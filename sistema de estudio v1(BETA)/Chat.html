@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="./assets/css/chat.css">
+    <link rel="stylesheet" href="./assets/css/home.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="stylesheet" href="./assets/css/btn.css">
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="shortcut icon" href="./assets/img/PG.png" type="image/x-icon">
+
+<!-- ✝ ======= 🐉 ╟ Tarjeta ╢ 🐉 ======= ✝ -->
+
+<meta name="description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<link rel="canonical" href="https://pegasus-v2.netlify.app/" />
+<link rel="image_src" href="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" id="image_src" />
+<meta property="og:type" content="website" />
+<meta property="fb:app_id" content="677288579025878" />
+<meta property="fb:pages" content="122006227838751" />
+<meta property="og:title" content="Pegasus X" />
+<meta name="keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+<meta name="news_keywords" content="Pegasus X, apoyo, personas, sociedad, enfoque">
+
+<meta property="og:url" content="https://pegasus-v2.netlify.app/" />
+<meta property="og:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png" />
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:site_name" content="Pegasus X" />
+<meta property="og:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+<meta property="og:locale" content="es_ES" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@NamazYunpio">
+<meta name="twitter:title" content="Pegasus X">
+<meta name="twitter:description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer">
+<meta name="twitter:image" content="https://cdn.discordapp.com/attachments/952741392139042827/1143988576565080234/PGX_2.png">
+<meta name="robots" content="index, follow" />
+<meta name='googlebot' content='index, follow' />
+
+<!-- ✝ ======= 🐉 ╟ Dublin Core ╢ 🐉 ======= ✝ -->
+
+<meta name="DC.title" content="Pegasus X" />
+<meta name="dc.creator" content="PEGASUS X">
+<meta name="dc.date" content="2023-08-21">
+<meta name="DC.identifier" content="https://pegasus-v2.netlify.app/" />
+<meta name="DC.description" content="Pegasus X Explora el Universo de Conocimiento: Tu Destino para Descubrir, Aprender y Crecer" />
+<meta name="dc.subject" content=" Pegasus X, pegasus x">
+<meta name="dc.format" content="text/html">
+<meta name="DC.language" content="es" />
+
+<meta name=”GOOGLEBOT” content=”NOODP” />
+<meta name=”Slurp” content=”NOODP” />
+<meta name=”msnbot” content=”NOODP” />
+
+<!-- ✝ ======= 🐉 ╟ favicon diferentes dispositivos + pwa ╢ 🐉 ======= ✝ -->
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Pegasus X">
+<meta name="theme-color" content="#b10a0a">
+
+<!-- ✝ ======= 🐉 ╟ Tarjeta fin ╢ 🐉 ======= ✝ -->
+
+
+
+
+</head>
+<body>
+  <div id="overlay">
+    <div id="loader">
+      <div class="loader-circle"></div>
+    </div>
+    <div id="loading-text">Cargando...</div>
+ </div>
+
+    
+    <div class="chat-container">
+        <div class="titulo"><h1>ChatBot Pgx</h1> </div>
+      <h1 id="texto-generado"></h1>
+
+        <div class="faq-list" id="faq-list">
+            <span class="faq-item" id="btn-greem" >Iniciar</span>
+            <br>            
+
+        </div>
+
+        <br>
+
+        <div class="chat-output" id="chat-output">
+                <!-- Agregar sección de preguntas frecuentes -->
+                
+        </div>
+        <div class="user-input-container">
+            <input type="text" id="user-input" placeholder="Escribe Star...">
+            <br><br>
+            <button id="send-button">Enviar</button>
+            <div class="extra">
+              <button id="clear-button"><i class='bx bx-trash'></i></button>
+              <br>
+              <br>
+              <button id="scrollButton"><i class='bx bxs-chevron-down'></i></button>
+            </div>
+            <br><br>
+        </div>
+    </div>
+
+<script>
+  const container = document.getElementById('chat-output');
+  const scrollButton = document.getElementById('scrollButton');
+  const innerContent = document.getElementById('chat-output');
+
+  // Mostrar u ocultar el botón según la posición del scroll
+  container.addEventListener('scroll', () => {
+    if (innerContent.clientHeight + container.scrollTop < innerContent.scrollHeight - 10) {
+      scrollButton.style.display = 'block';
+    } else {
+      scrollButton.style.display = '';
+    }
+  });
+
+  // Hacer scroll suavemente al final del contenido del div
+  scrollButton.addEventListener('click', () => {
+    innerContent.scrollTo({ top: innerContent.scrollHeight, behavior: 'smooth' });
+  });
+</script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+   <!--   <script src="https://cdn.jsdelivr.net/npm/string-similarity/umd/string-similarity.min.js"></script>-->
+    <script src="./reconocedor.js"></script>
+    <script>
+
+// Luego, puedes insertar "textoModificado" en tu página web como desees.
+
+              // Código JavaScript en la página 
+      $(document).ready(function() {
+        // Verificar si el control de seguridad ya se realizó hoy
+        var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+        var today = new Date().toLocaleDateString();
+      
+        if (lastSecurityCheckDate === today) {
+          // Si el control ya se realizó hoy, omitirlo
+          showWelcomeMessage();
+        } else {
+          // Si es un nuevo día, realizar el control de seguridad
+          performSecurityCheck();
+        }
+      });
+      
+      function showWelcomeMessage() {
+        // Aquí puedes mostrar un mensaje de bienvenida, ya que el control de seguridad ya se realizó hoy
+        var username = localStorage.getItem('username');
+        if (username) {
+          $(".user").text(username);
+          //var saludo = "¡Holii, " + username + " Bienvenido!";
+          //textoGenerado.textContent = saludo; // Actualizar el texto generado con el saludo
+        } else {
+          // Si no se ha proporcionado el nombre, volver a pedirlo
+          performSecurityCheck();
+        }
+        hideLoader(); // Ocultar el overlay ya que el control ya se realizó con éxito
+      }
+      
+      function performSecurityCheck() {
+        $.get("nombres.txt", function(nombreData) {
+          $.get("codigo.txt", function(codigoData) {
+            var nombres = nombreData.split("\n").map(function(nombre) {
+              return nombre.trim();
+            });
+      
+            var codigos = codigoData.split("\n").map(function(codigo) {
+              return codigo.trim();
+            });
+      
+            var maxAttempts = 3;
+            var attempts = 0;
+            var isAvisoMostrado = false;
+            var controluno = false;
+            var controldos = false;
+      
+            function showLoader() {
+              $("#overlay").fadeIn();
+            }
+      
+            function hideLoader() {
+              $("#overlay").fadeOut();
+            }
+      
+            function guardarDatos(nombre, codigo) {
+              var fechaHora = obtenerFechaHora(); // Obtener fecha y hora actual
+              var url = "https://script.google.com/macros/s/AKfycbx4wyov3Eo9Y244XgwOuonBwWRcHCHOkEZCbqPdpoNi_F2Y9aNvroX71IeJ5Jtv0lGI/exec";
+              var data = {
+                nombre: nombre,
+                codigo: codigo
+              };
+      
+              $.post(url, JSON.stringify(data), function(response) {
+                alert(response);
+              });
+            }
+      
+            function obtenerFechaHora() {
+              var now = new Date();
+              var fecha = now.toLocaleDateString();
+              var hora = now.toLocaleTimeString();
+              return fecha + " " + hora;
+            }
+      
+            function checkNombre() {
+              if (attempts < maxAttempts) {
+                if (!isAvisoMostrado) {
+                  alert("😋 Holiii Es hora de acceder 😋 \n🤭 Si no tienes tus claves accede a este \n 🔗 link: 'pegasus-v2.tk/resgistro' 🔗 para obtener tu acceso 😏 \n \n☠️ No te equivoques ☠️"); // Mensaje de aviso antes de solicitar la contraseña
+                  isAvisoMostrado = true;
+                }
+      
+                if (!controluno) {
+                  alert("Control De Seguridad 1"); // Mensaje de aviso antes de solicitar la contraseña
+                  controluno = true;
+                }
+      
+                var username = prompt("Ingrese el nombre de seguridad");
+      
+                if (nombres.includes(username)) {
+                  checkCodigo(username); // Pasamos el nombre como argumento a la función checkCodigo
+                } else {
+                  attempts++;
+                  alert("Nombre de seguridad incorrecto. Intento " + attempts + " de " + maxAttempts);
+                  checkNombre();
+                }
+              } else {
+                showLoader();
+                setTimeout(hideLoader, 5000);
+                window.location.href = "404.html";
+              }
+            }
+      
+            function checkCodigo(username) { // Añadimos un parámetro "username"
+              if (attempts < maxAttempts) {
+      
+                if (!controldos) {
+                  alert("Control De Seguridad 2"); // Mensaje de aviso antes de solicitar la contraseña
+                  controldos = true;
+                }
+      
+                var codigo = prompt("Ingrese el código");
+      
+                if (codigos.includes(codigo)) {
+                  showLoader();
+                  setTimeout(function() {
+                    hideLoader();
+                    //var saludo = "¡Holiii, " + username + " Bienvenido!"; // Concatenamos el nombre al saludo
+                    //textoGenerado.textContent = saludo;
+                    // Actualizamos el texto generado con el saludo
+                    alert(" ✅ Acceso concedido ✅ ");
+                    guardarDatos(username, codigo); // Guardar los datos en Google Sheets
+      
+                    // Al finalizar el control de seguridad, guardar la fecha actual para evitar que se realice nuevamente hoy
+                    var today = new Date().toLocaleDateString();
+                    localStorage.setItem('lastSecurityCheckDate', today);
+      
+                    // Guardar el nombre de usuario para futuros saludos
+                    localStorage.setItem('username', username);
+                  }, 5000);
+                } else {
+                  attempts++;
+                  alert("Código incorrecto. Intento " + attempts + " de " + maxAttempts);
+                  checkCodigo(username); // Pasamos el nombre como argumento a la función checkCodigo
+                }
+              } else {
+                showLoader();
+                setTimeout(hideLoader, 5000);
+                window.location.href = "404.html";
+              }
+            }
+      
+            showLoader();
+            checkNombre();
+          });
+        });
+      }
+      
+      function showLoader() {
+        // Verificar si el control de seguridad ya se realizó con éxito en el mismo día
+        var lastSecurityCheckDate = localStorage.getItem('lastSecurityCheckDate');
+        var today = new Date().toLocaleDateString();
+      
+        if (lastSecurityCheckDate !== today) {
+          $("#overlay").fadeIn();
+        }
+      }
+      
+      function hideLoader() {
+        $("#overlay").fadeOut();
+      }
+      
+      
+        var textoGenerado = document.getElementById("texto-generado");
+
+        var audio = new Audio('presentacion.wav');
+
+
+        
+  function presentacion() {
+  const lector = document.getElementById('lector');
+    //var audio = new Audio('presentacion.wav');
+    audio.play();
+    lector.innerHTML = '<span class="lector" id="lector" onclick="presentacion()">⏹️</span>';
+            setTimeout(function() { 
+            lector.innerHTML = '<span class="lector" id="lector" onclick="presentacion()">▶️</span>';
+                 
+        }, 18000);
+  }  
+        const intents = {
+            "intents": [
+            {
+                "tag": "star",
+                "patterns": ["star"],
+                "responses": [
+                    {
+                        "text": '<div class="presentacion"><h1>😋 Pegasus X 😋</h1><p><span class="lector" id="lector" onclick="presentacion()">▶️</span> <span style="background-color: #000; "> Holiiii {user} te doy la bienvenida a Pegasus X somos un empresa sin fines de lucro, nuestro objetivo es fortalecer tu aprendizaje academico para lograr un mayor aprendizaje y obtener un buen rendimiento en tu persona: </span> <br><br>Información:<br><br>  <a href="">⚠️ Límites ⚠️</a> <br><br> <a href="">🗂️ Comandos Existentes 🗂️</a> </span> <br><br> Links:<br><br> <span style="background-color: #000;">  <a href="">📑Compartir Material 📑</a> <br><br> <a href="">📼 Ver Videos 📼</a> <br><br> <a href="">📚 Libros 📚</a> </span> <br><br>🧾Reglas De Uso🧾: <br><br><span style="background-color: #000;"> 1.- 🔐No compartir con nadie con tus claves de seguridad ☠️ no queremos quitarle su acceso 🎫 <br><br> 2.- 📝 Compartir material para mejorar la enseñanza</span> <br><br> ⌨️ Reglas Del <a href="#">ChatBot</a> ⌨️:<br><br><span style="background-color: #000; "> esta es la estructura N#1 de mensajes: <br><br> <span style="color: #fff;" >{area}, {tema} + teoria <br><br>ejemplo: <br><br>geometría, segmentos teoria</span> <br><br>esta es la estructura N#2 de mensajes: <br><br> <span style="color: #fff; " >{area}, {tema}, {banco de preguntas (N#)}</span> <br><br>respuesta: <br><br><span style="color: #fff;" >{area}, {tema}, {banco de preguntas (N#)} + respuestas</span> </span> <br><br>🥺 Apoyamos 🥺:<br><br><span style="background-color: #000; "><a href="">📂 Facebook</a><br><a href="">📂 WhatsApp</a><br><a href="">📂 YouTube</a><br><a href="">📂 Tiktok</a></span><br><br>💻 Creadores 💻: <br><br><span style="background-color: #000; "> 🤐 Pgx<br> 😐 Rb </span> </p></div>',
+                        
+                        "attachment": '<br>'
+                    },
+                    {
+                        "text": "Respuesta 2 😂",
+                        "attachment": '<br><br><video id="video" class="video-js" controls preload="auto" poster="./assets/img/pegasus.jpg" data-setup="{}"><source src="https://github.com/1RubiUwU1/ChatPgx/raw/main/canto.mp4" type="video/mp4" />    </video><br><br><div class="contenedor-btns"> <a class="btn-download" href="" download >Descargar</a></div>'
+                    },
+                    {
+                        "text": "Respuesta 3 🤪",
+                        "attachment": '<br><br><video id="video" class="video-js" controls preload="auto" poster="./assets/img/pegasus.jpg" data-setup="{}"><source src="https://github.com/1RubiUwU1/ChatPgx/raw/main/canto.mp4" type="video/mp4" />    </video><br><br><div class="contenedor-btns"> <a class="btn-download" href="" download >Descargar</a></div>'
+                    }
+                ]
+            },
+            {
+                    "tag": "saludo",
+                    "patterns": ["hola", "qué tal", "cómo estás", "saludos"],
+                    "responses": [
+                        {
+                            "text": 'Holi ' + localStorage.getItem('username') + ' :3' ,
+                            "attachment": '<br><br><img class="img-saludo" src="holi.jpeg" alt="">'
+                        }
+                    ]
+                },
+                {
+                    "tag": "índice",
+                    "patterns": ["índice"],
+                    "responses": [
+                        {
+                            "text": '<p>aquí tienes el índice:</p><h3>Índice</h3><p><span class="lector" id="lector" onclick="presentacion()">▶️</span>Contamos con los siguientes temas:<br><br><span style="background-color: #000;"> 1.- 📚Geometría:<br>📕Segmentos<br><br> 2.- 📚 Álgebra</span></p>',
+                            "attachment": null
+                        }
+                    ]
+                },
+                {
+                    "tag": "GMT",
+                    "patterns": ["{geometría}, {segmentos} teoria", "geometría, segmentos teoria"],
+                    "responses": [
+                    {
+                        "text": "segmentos teoría:",
+                        "attachment":'<br><br><img class="img" src="https://raw.githubusercontent.com/pegasus1v1/fotos/main/geo1.jpg" alt=""><br><br> <div class="contenedor-btns"> <a class="btn-download" href="" download >Descargar</a></div>'
+                    }
+                ]
+                },
+                {
+                    "tag": "res",
+                    "patterns": ["cántame"],
+                    "responses": [
+                    {
+                        "text": "jsjsjsj 🤭",
+                        "attachment": '<br><br><video id="video" class="video-js" controls preload="auto" poster="./assets/img/pegasus.jpg" data-setup="{}"><source src="https://github.com/1RubiUwU1/ChatPgx/raw/main/canto.mp4" type="video/mp4" />    </video><br><br><div class="contenedor-btns"> <a class="btn-download" href="" download >Descargar</a></div>'
+                    }
+                ]
+                },{
+                    "tag": "que",
+                    "patterns": ["que"],
+                    "responses": [
+                    {
+                        "text": "so",
+                        "attachment": null
+                    }
+                ]
+                }
+                // Puedes agregar más intenciones aquí
+            ]
+        };
+
+        const chatOutput = document.getElementById('chat-output');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const clearButton = document.getElementById('clear-button');
+        const faqList = document.getElementById('faq-list');
+        
+        // Historial del chat (se inicializa con los mensajes guardados en el LocalStorage)
+        let chatHistory = JSON.parse(localStorage.getItem('chatHistory')) || [];
+        let isSendingMessage = false;
+        let lastResponseIndex = -1; // Índice de la última respuesta enviada
+        
+        // Función para mostrar el historial del chat
+        function displayChatHistory() {
+            for (const message of chatHistory) {
+                outputMessage(message.text, message.sender, message.attachment);
+            }
+        }
+        
+        // Función para guardar un mensaje en el historial del chat
+        function saveMessageToChatHistory(message, sender, attachment) {
+            chatHistory.push({ text: message, sender: sender, attachment: attachment });
+            localStorage.setItem('chatHistory', JSON.stringify(chatHistory));
+        }
+        
+        // Función para limpiar el historial del chat
+        function clearChatHistory() {
+            chatOutput.innerHTML = '';
+            chatHistory = [];
+            localStorage.removeItem('chatHistory');
+            lastResponseIndex = -1; // Reiniciar el índice de la última respuesta
+        }
+        
+        // Función para enviar una pregunta al chat cuando se hace clic en ella
+        function sendQuestionToChat(question) {
+            outputMessage(question, 'user');
+            isSendingMessage = true;
+        
+            const botResponse = getBotResponse(question);
+            setTimeout(function () {
+                outputMessage(botResponse.text, 'bot', botResponse.attachment);
+                saveMessageToChatHistory(botResponse.text, 'bot', botResponse.attachment);
+                isSendingMessage = false;
+            }, 1000);
+        }
+        
+        // Evento clic en una pregunta frecuente para enviarla al chat
+        let showFaq = true; // Variable para alternar entre preguntas frecuentes y acciones anteriores
+        
+        faqList.addEventListener('click', function (event) {
+            if (showFaq) {
+                // Mostrar preguntas frecuentes
+                faqList.style.display = "";
+                setTimeout(function () {
+                    faqList.style.display = "block";
+                    faqList.innerHTML = '<span id="btn-greem" >Estoy activa UwU</span>';
+                    faqList.classList.remove("faq-item");
+                }, 1000);
+            } else {
+                alert("🤬🤬🤬");
+                faqList.innerHTML = '<span id="btn-greem" >No quieras probar mi paciencia</span>';
+                // Crear el elemento img
+             const imgElement = document.createElement('img');
+             imgElement.classList.add("enojo");
+             imgElement.src = './angry.jpeg'; // Reemplaza 'ruta_de_la_imagen.jpg' con la ruta de tu imagen
+             imgElement.alt = 'Descripción de la imagen'; // Reemplaza 'Descripción de la imagen' con la descripción adecuada
+             // Crear un elemento <br> para agregar un salto de línea antes de la imagen
+             const brElement = document.createElement('br');
+             const br = document.createElement('br');
+             // Agregar el elemento <br> y la imagen al botón
+             faqList.appendChild(brElement);
+             faqList.appendChild(br);
+             faqList.appendChild(imgElement);     
+        faqList.classList.remove("faq-item");
+        setTimeout(function() { 
+        imgElement.style.display = "none";
+            
+        }, 5000);
+        
+            
+        
+        return;
+            }
+        
+            // Alternar el valor de la variable showFaq
+            showFaq = !showFaq;
+            if (!isSendingMessage && event.target.classList.contains('faq-item')) {
+                const question = event.target.textContent;
+                sendQuestionToChat(question);
+                // Guardar la pregunta frecuente en el historial del chat
+                saveMessageToChatHistory(question, 'user', null);
+            }
+        });
+        
+        function outputMessage(message, sender, attachment) {
+            const messageContainer = document.createElement('div');
+            messageContainer.className = sender === 'bot' ? 'message-container' : 'message-container user-message';
+            const chatBubble = document.createElement('div');
+            chatBubble.className = sender === 'bot' ? 'bot-message' : 'user-message';
+            messageContainer.appendChild(chatBubble);
+            chatOutput.appendChild(messageContainer);
+        
+            if (!attachment) {
+                message = message.replace('{user}', localStorage.getItem('username'));
+        
+                chatBubble.innerHTML = message;
+                // Eliminamos la función de simulación de escritura para el mensaje del bot
+            } else {
+                chatBubble.innerHTML = message;
+                chatBubble.insertAdjacentHTML('beforeend', attachment);
+            }
+        }
+        
+        // Función para obtener la respuesta del bot
+        function getBotResponse(userInputText) {
+            const threshold = 0.5; // Umbral de similitud mínimo para considerar una coincidencia
+        
+            const userNormalized = normalizeText(userInputText);
+        
+            for (const intent of intents.intents) {
+                for (const pattern of intent.patterns) {
+                    const patternNormalized = normalizeText(pattern);
+                    const similarity = stringSimilarity.compareTwoStrings(userNormalized, patternNormalized);
+                    if (similarity > threshold) {
+                        const responses = intent.responses;
+                        lastResponseIndex = (lastResponseIndex + 1) % responses.length; // Avanzar al siguiente índice de respuesta
+                        return responses[lastResponseIndex];
+                    }
+                }
+            }
+        
+            return {
+              text: "¡Disculpa 😭 que no pueda absolver algunas de tus dudas!",
+              attachment: '<br><br><img class="img-error" src="./error.png" alt="">'
+            };
+        }
+        
+        // Función para normalizar el texto
+        function normalizeText(text) {
+            return text.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+        }
+        
+        // Evento clic en el botón "Enviar"
+        sendButton.addEventListener('click', function () {
+            const userMessage = userInput.value;
+            if (!isSendingMessage && userMessage.trim() !== '') {
+                outputMessage(userMessage, 'user');
+                saveMessageToChatHistory(userMessage, 'user', null);
+        
+                const botResponse = getBotResponse(userMessage);
+                setTimeout(function () {
+                    outputMessage(botResponse.text, 'bot', botResponse.attachment);
+                    saveMessageToChatHistory(botResponse.text, 'bot', botResponse.attachment);
+                    isSendingMessage = false;
+                }, 0);
+        
+                userInput.value = '';
+            }
+        });
+        
+        userInput.addEventListener('keyup', function (event) {
+            if (event.key === 'Enter') {
+                sendButton.click();
+            }
+        });
+        
+        // Evento clic en el botón "Limpiar"
+        clearButton.addEventListener('click', function () {
+            clearChatHistory();
+        });
+        
+        // Mostrar el historial del chat al cargar la página
+        displayChatHistory();
+    </script>
+</body>
+</html>

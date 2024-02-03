@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Metal+Mania&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html{
+    font-size: 2vh;
+}
+a{
+    text-decoration: none;
+}
+::-webkit-scrollbar{
+    width: 10px;
+    background: #000000;
+    border-radius: 30px;
+}
+::-webkit-scrollbar-thumb{
+    border-radius: 30px;
+    background: #4e0000;
+}
+
+.header{
+    margin-right: 10px;
+    float: left;
+    width: calc(50% - 10px); 
+    outline: 10px solid #000;
+    background: #000000;
+    width: 350px;
+    height: 100vh;
+    overflow: auto;
+    display: block;
+}
+
+.logo{
+    padding: 10px;
+    text-align: center;
+    display: flex;
+    font-family: 'Metal Mania', cursive;
+}
+.logo img{
+    width: 90px;
+
+}
+.logo span{
+    font-size: 40px;
+    margin-top: 30px;
+    color: #c40000;
+}
+/* header{
+    width: 100%;
+    height: 600px;
+    background: rgba(44, 83, 99, 0.493);  
+    background: -webkit-linear-gradient(to right, rgba(44, 83, 99, 0.493), rgba(31, 57, 65, 0.493), rgba(16, 33, 40, 0.493)), url(https://www.geekmi.news/__export/1646861244633/sites/debate/img/2022/03/09/geekmi_news_-_2022-03-09t142643_780.jpg_172596871.jpg);
+    background: linear-gradient(to right, rgba(44, 83, 99, 0.493), rgba(31, 57, 65, 0.493), rgba(16, 33, 40, 0.493)), url(https://www.geekmi.news/__export/1646861244633/sites/debate/img/2022/03/09/geekmi_news_-_2022-03-09t142643_780.jpg_172596871.jpg); 
+    background-size: cover;
+    background-attachment: fixed;
+    position: relative;
+}    */
+.Iformes h1{
+    font-size: 40px;
+    text-align: center;
+    color: #000000;
+    font-family: 'Metal Mania', cursive;
+    -webkit-text-stroke: 1px #c40000;
+}
+ul{
+    position: relative;
+    /* display: flex; */
+    padding: 30px;
+    gap: 30px;
+    font-family: 'Metal Mania', cursive;
+}
+ul li{
+    position: relative;
+    list-style: none;
+    font-family: 'Metal Mania', cursive;
+    
+}
+ul li a{
+    
+    position: relative;
+    font-size: 1.5em;
+    text-decoration: none;
+    line-height: 1em;
+    letter-spacing: 2px;
+    color: rgba(230, 230, 250, 0);
+    -webkit-text-stroke: 1px #ffffff;
+    font-family: 'Metal Mania', cursive;
+  
+}
+ul li a::before{
+    content: attr(data-text);
+    position: absolute;
+    color: var(--clr);
+    width: 0;
+    overflow: hidden;
+    transition: 1s;
+    border-right: 8px solid var(--clr);
+    -webkit-text-stroke: 1px var(--clr);
+    font-family: 'Metal Mania', cursive;
+}
+ul li a:hover::before{
+    width: 100%;
+    filter: drop-shadow(0 0 25px var(--clr));
+    font-family: 'Metal Mania', cursive;
+}
+.home{
+    max-width: 100%;
+    color: #fff;
+    width: calc(48%- 20px); 
+    height: 100vh;
+    background: url(https://p4.wallpaperbetter.com/wallpaper/897/911/667/anime-manga-anime-girls-illustration-fan-art-hd-wallpaper-preview.jpg) right;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow: auto;
+
+    animation: backgroundAnimation 6s infinite alternate forwards;
+}
+.contenedor{
+    position: relative;
+    overflow: auto;
+    height: 100vh;
+    background: #000000ad;
+}
+.tablero-control-header{
+    display: none;
+}
+.urls{
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+}
+.urls a{
+    color: #c40000;
+    padding: 10px;
+    background: #000;
+    border-radius: 1000px;
+}
+@keyframes backgroundAnimation {
+    0% {
+        transition: 3s;
+        -webkit-filter: brightness(30%);
+        filter: brightness(30%);
+    }
+
+    100% {
+        transition: 3s;
+        -webkit-backdrop-filter: brightness(200%);
+        -webkit-filter: brightness(200%);
+        backdrop-filter: brightness(200%);
+        filter: brightness(200%);
+    }
+}
+@media screen and (max-width: 767px) {
+    .header{
+        width: 100%;
+    }
+    .tablero-control-header{
+        z-index: 10;
+        position: absolute;
+        right: 10px;
+        font-size: 30px;
+        cursor: pointer;
+        color: #c40000;
+        display: block;
+    }
+    .contenedor{
+        padding: 10px;
+    }
+}  
+
