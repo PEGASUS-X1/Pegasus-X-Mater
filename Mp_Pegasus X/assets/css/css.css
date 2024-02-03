@@ -1,0 +1,106 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+body{
+    background: url(../94490893_3622783917792038_1123709572305911808_n.jpg) fixed center bottom;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.controladores{
+    position: fixed;
+    top: 0;
+    right: 0;
+    padding: 10px;
+}
+.controladores button{
+    cursor: pointer;
+    width: 130px;
+    background: #000;
+    color: red;
+    height: 30px;
+    font-size: 2.3vh;
+    font-weight: bolder;
+}
+.mp{
+    max-width: 95%;
+    text-align: center;
+    width: 500px;
+    padding: 10px;
+    padding-bottom: 20px;
+    top: 50%;
+    left: 50%;
+    border: 1px solid #000;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    background: #ffffffcf;
+}
+.mp .btns{
+    width: 100%;
+    text-align: center;
+    margin-bottom: 20px;
+}
+.mp .btns button{
+    font-size: 2.2vh;
+    cursor: pointer;
+    width: 200px;
+    height: 30px;
+    border-radius: 1000px;
+    background: #00000000;
+    border: 2px solid #000;
+}
+.mp .btns button.active{
+    background: rgb(0, 255, 0);
+}
+.mp .Primaria,.segundaria{
+    width: 100%;
+    height: auto;
+}
+.Primaria {
+    display: none;
+}
+
+.Segundaria{
+    display: none;
+}
+
+
+.mp h1{
+    font-size: 5vh;
+    font-weight: 1;
+    margin-bottom: 20px;
+}
+
+
+.mp input{
+    width: 90%;
+    height: 20px;
+    padding: 5px;
+    font-size: 2.3vh;
+    margin: 10px;
+}
+
+.mp select{
+    width: 92.7%;
+    height: 35px;
+    font-size: 2.3vh;
+    margin: 10px;
+}
+
+.mp button{
+    width: 80%;
+    margin-top: 10px;
+    height: 30px;
+}
+
+#logo{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 10px;
+    background: #000;
+    color: red;
+}

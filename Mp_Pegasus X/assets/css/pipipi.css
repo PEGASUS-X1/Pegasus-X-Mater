@@ -1,0 +1,50 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+
+body{
+    /* background: url(https://www.elimparcial.com/__export/1596930003185/sites/elimparcial/img/2020/08/08/2088441_crop1596929940436.jpg_553764946.jpg) left fixed; */
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.registro{
+    /* margin: 20px auto; */
+    position: relative;
+    left: 20px;
+    top: 30px;
+    /* margin-top: 20px; */
+    width: 300px;
+    height: auto;
+    padding: 10px;
+    border: 1px solid #000;
+    background: #00000069;
+    text-align: center;
+    justify-content: center;
+    color:  #fff;
+}
+
+.registro select, input{
+    max-width: 100%;
+    padding: 10px 0px;
+    width: 100%;
+    text-align: center;
+}
+
+.registro .separedor{
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+.btn{
+    margin-top: 20px;
+    padding: 10px 50px;
+}
+.btn-cal{
+    margin-top: 20px;
+    padding: 10px 10px;
+    font-size: 20px;
+    background: #fff;
+    color: #000;
+}
