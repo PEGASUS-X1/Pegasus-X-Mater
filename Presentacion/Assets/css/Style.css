@@ -1,0 +1,158 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: none;
+}
+body{
+    background: #000;
+    min-height: 100vh;
+}
+
+::selection{
+    background: #8f0000;
+}
+
+.Exit{
+    text-decoration: none;
+    border: none;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    line-height: 40px;
+    width: 40px;
+    color: #c00000;
+    background: #00000000;
+    font-size: 20px;
+}
+#texto-generado{
+    text-align: center;
+    margin-top: 10px;
+    color: #fff;
+    /* animation: hackerBlink 3s infinite; */
+
+}
+.pregunta h2{
+    font-weight: 1;
+}
+.pregunta{
+    max-width: 97%;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    /* border: 1px solid #fff; */
+    /* padding: 15px; */
+    width: 500px;
+    transform: translate(-50%, -50%);
+    animation: hackerBlink 3s infinite;
+    color: #fff;
+}
+.pregunta .cotenedor_de_botones{ 
+    margin-top: 20px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+.pregunta .cotenedor_de_botones button{
+    margin: 5px;
+    cursor: pointer;
+    background: #000000;
+    color: #fff;
+    border: 1px solid #000;
+    font-size: 15px;
+    line-height: 30px;
+    width: 150px;
+    animation: hackerBlinkBoder 3s infinite;
+}
+@keyframes hackerBlinkBoder {
+    0% {
+        border-color: #000;
+    }
+    25% {
+        border-color: #000;
+    }
+    30% {
+        border-color: #00000000;
+    }
+    35% {
+        border-color: lime;
+    }
+    40% {
+        border-color: #00000000;
+    }
+    45% {
+        border-color: lime;
+    }
+    50% {
+        border-color: #00000000;
+    }
+    55% {
+        border-color: lime;
+    }
+    60% {
+        border-color: #00000000;
+    }
+    65% {
+        border-color: lime; 
+    }
+    70% {
+        border-color: #00000000;
+    }
+    75% {
+        border-color: #000;
+    }
+    100% {
+        border-color: #000;
+    }
+}
+@keyframes hackerBlink {
+    0% {
+        color: #fff;
+    }
+    25% {
+        color: #fff;
+    }
+    30% {
+        color: #00000000;
+    }
+    35% {
+        color: lime;
+    }
+    40% {
+        color: #00000000;
+    }
+    45% {
+        color: lime;
+    }
+    50% {
+        color: #00000000;
+    }
+    55% {
+        color: lime;
+    }
+    60% {
+        color: #00000000;
+    }
+    65% {
+        color: lime; 
+    }
+    70% {
+        color: #00000000;
+    }
+    75% {
+        color: #fff;
+    }
+    100% {
+        color: #fff;
+    }
+}
+
+@media screen and (max-width: 337px) {
+    .pregunta .cotenedor_de_botones button{
+        width: 90%;
+    }
+    .pregunta {
+        text-align: left;
+        width: 95%;
+    }
+}
