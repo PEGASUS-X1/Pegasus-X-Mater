@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assent/css/registro.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <audio id="miMusica" >
+        <source src="./assent/audio/ElevenLabs_2024-02-06T02_46_09_Nicole_pre_s50_sb75_se21_b_m2.mp3" type="audio/mpeg">
+    </audio>
+    <div class="formaulario" id="elementoParaOcultar">
+        <h1>Registro Pegasus X(v2)</h1>
+        <span>!Revuerda que solo es una vez es el registro</span>
+        <input type="text" id="nombre" placeholder="Pon Tu Nombre">
+        <input type="number" name="" id="numero" placeholder="Pon Tu Numero De Celular" >
+        <select name="" id="Area" onchange="actualizarEnlace()">
+            <option value="">Seleccione La Área</option>
+            <option value="PRE_CALCULO" id="opcion1">PRE CÁLCULO</option>
+            <option value="SEMINARIO" id="opcion2">SEMINARIO TALLER DE COMUNICACIÓN ORAL Y ESCRITA</option>
+            <option value="METODOS" id="opcion3">MÉTODOS Y TÉCNICAS DE ESTUDIO UNIVERSITARIO</option>
+            <option value="ANTROPOLOGIA" id="opcion4">ANTROPOLOGIA</option>
+        </select>
+        <button type="submit" onclick="Guardar()">Enviar</button>
+    </div>
+
+    <div class="wasap" id="visible">
+        <a href="" id="Area_Selec" target="_blank">Unirse al grupo</a>
+    </div>
+
+    <span class="MadeBy">Made By : Pegasus X(Joseph)</span>
+    <script src="./assent/js/registro.js"></script>
+</body>
+</html>
